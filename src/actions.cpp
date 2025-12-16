@@ -18,7 +18,6 @@ void action_settings_selection_change(lv_event_t *e) {
     {
         lv_obj_clear_flag(objects.container_demo_settings, LV_OBJ_FLAG_HIDDEN);
     }
-    
 }
 
 

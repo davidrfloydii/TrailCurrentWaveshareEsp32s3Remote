@@ -1,4 +1,5 @@
 #include <Arduino.h>
+#include "globals.h"
 #include <string.h>
 #include "ui/screens.h"
 #include "ui/vars.h"
@@ -146,4 +147,34 @@ void set_var_mcu_mac_address(const char *value) {
     strncpy(mcu_mac_address, value, sizeof(mcu_mac_address) / sizeof(char));
     mcu_mac_address[sizeof(mcu_mac_address) / sizeof(char) - 1] = 0;
     lv_label_set_text(objects.mcu_mac_address_value, value);
+}
+
+
+int32_t number_of_satellites;
+int32_t get_var_number_of_satellites() {
+    return number_of_satellites;
+}
+void set_var_number_of_satellites(int32_t value) {
+    number_of_satellites = value;
+    lv_label_set_text(objects.label_number_of_satellite_value, String(value).c_str());
+}
+
+
+float current_course_over_ground;
+float get_var_current_course_over_ground() {
+    return current_course_over_ground;
+}
+void set_var_current_course_over_ground(float value) {
+    current_course_over_ground = value;
+}
+
+
+char gnss_mode[100] = { 0 };
+const char *get_var_gnss_mode() {
+    return gnss_mode;
+}
+void set_var_gnss_mode(const char *value) {
+    strncpy(gnss_mode, value, sizeof(gnss_mode) / sizeof(char));
+    gnss_mode[sizeof(gnss_mode) / sizeof(char) - 1] = 0;
+    lv_label_set_text(objects.gnss_mode_value, value);
 }

@@ -75,7 +75,7 @@ void lvgl_port_tp_read(lv_indev_drv_t * indev, lv_indev_data_t * data)
         data->point.x = point.x;
         data->point.y = point.y;
 
-        Serial0.printf("Touch point: x %d, y %d\n", point.x, point.y);
+        // Serial0.printf("Touch point: x %d, y %d\n", point.x, point.y);
     }
 }
 #endif

@@ -53,8 +53,8 @@ namespace espNowHelper
                           baseMac[0], baseMac[1], baseMac[2],
                           baseMac[3], baseMac[4], baseMac[5]);
             snprintf(buffer, sizeof(buffer), "%02x:%02x:%02x:%02x:%02x:%02x", baseMac[0], baseMac[1], baseMac[2],
-                          baseMac[3], baseMac[4], baseMac[5]);
-                          set_var_mcu_mac_address(buffer);
+                     baseMac[3], baseMac[4], baseMac[5]);
+            set_var_mcu_mac_address(buffer);
         }
         else
         {
@@ -104,15 +104,68 @@ namespace espNowHelper
         // currently turned on or have a value > 255
         uint32_t incomingIdentifier = incomingMessage.identifier;
         if (incomingIdentifier == 7)
-        { // Speed & Course Message
+        {
+            // Number of satellites used
+            int8_t numSats = incomingMessage.dataByte0;
+            set_var_number_of_satellites(numSats);
+            // Speed & Course Message
             int32_t scaledSpeed =
-                ((uint32_t)incomingMessage.dataByte0 << 8) |
-                (uint32_t)incomingMessage.dataByte1;
+                ((uint32_t)incomingMessage.dataByte1 << 8) |
+                (uint32_t)incomingMessage.dataByte2;
             float speedKnots = scaledSpeed / 100.0f;
             float speedMph = speedKnots * 1.15078f;
-            debug("Speed (knots): ");
-            debugln((int32_t)speedMph);
             set_var_current_speed_value((int32_t)speedMph);
+
+            uint32_t scaledCourse =
+                ((uint32_t)incomingMessage.dataByte3 << 8) |
+                (uint32_t)incomingMessage.dataByte4;
+            float courseDegrees = scaledCourse / 100.0f;
+            set_var_current_course_over_ground(courseDegrees);
+            uint8_t gnssMode = incomingMessage.dataByte5;
+            /**
+             * @fn getGnssMode
+             * @brief Get the used gnss mode
+             * @return mode
+             * @retval 1  gps
+             * @retval 2  beidou
+             * @retval 3  gps + beidou
+             * @retval 4  glonass
+             * @retval 5  gps + glonass
+             * @retval 6  beidou +glonass
+             * @retval 7  gps + beidou + glonass
+             */
+            if (gnssMode == 1)
+            {
+                set_var_gnss_mode("GPS");
+            }
+            else if (gnssMode == 2)
+            {
+                set_var_gnss_mode("Beidou");
+            }
+            else if (gnssMode == 3)
+            {
+                set_var_gnss_mode("GPS + Beidou");
+            }
+            else if (gnssMode == 4)
+            {
+                set_var_gnss_mode("GLONASS");
+            }
+            else if (gnssMode == 5)
+            {
+                set_var_gnss_mode("GPS + GLONASS");
+            }
+            else if (gnssMode == 6)
+            {
+                set_var_gnss_mode("Beidou + GLONASS");
+            }
+            else if (gnssMode == 7)
+            {
+                set_var_gnss_mode("GPS + Beidou + GLONASS");
+            }
+            else
+            {
+                set_var_gnss_mode("Unknown");
+            }            
         }
         else if (incomingIdentifier == 8)
         {

@@ -71,7 +71,7 @@ void loop()
     bool touched = panel->getLcdTouch()->getTouchState();
     if(touched) {
         TouchPoint point = panel->getLcdTouch()->getPoint();
-        Serial.printf("Touch point: x %d, y %d\n", point.x, point.y);
+        // Serial.printf("Touch point: x %d, y %d\n", point.x, point.y);
     }
 #endif
 
