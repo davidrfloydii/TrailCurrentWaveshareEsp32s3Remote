@@ -103,7 +103,15 @@ namespace espNowHelper
         // Set variables based on incoming data for indicators as to which pdm devices are
         // currently turned on or have a value > 255
         uint32_t incomingIdentifier = incomingMessage.identifier;
-        if (incomingIdentifier == 7)
+        if (incomingIdentifier == 5)
+        {
+            debugln("Received GPS Lat/Lon Message");
+        }
+        else if (incomingIdentifier == 6)
+        {
+            debugln("Received Date/Time Message");
+        }
+        else if (incomingIdentifier == 7)
         {
             // Number of satellites used
             int8_t numSats = incomingMessage.dataByte0;
@@ -165,15 +173,18 @@ namespace espNowHelper
             else
             {
                 set_var_gnss_mode("Unknown");
-            }            
+            }
         }
         else if (incomingIdentifier == 8)
         {
-            uint32_t scaledVoltage =
+            uint32_t scaled =
                 ((uint32_t)incomingMessage.dataByte0 << 24) |
                 ((uint32_t)incomingMessage.dataByte1 << 16) |
                 ((uint32_t)incomingMessage.dataByte2 << 8) |
                 (uint32_t)incomingMessage.dataByte3;
+            double altitude = scaled / 100.0;
+            double altitudeFeet = altitude * 3.28084;
+            set_var_current_altitude_value((float)altitudeFeet);
         }
         else
         {

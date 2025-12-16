@@ -37,7 +37,8 @@ enum FlowGlobalVariables {
     FLOW_GLOBAL_VARIABLE_MCU_MAC_ADDRESS = 19,
     FLOW_GLOBAL_VARIABLE_NUMBER_OF_SATELLITES = 20,
     FLOW_GLOBAL_VARIABLE_CURRENT_COURSE_OVER_GROUND = 21,
-    FLOW_GLOBAL_VARIABLE_GNSS_MODE = 22
+    FLOW_GLOBAL_VARIABLE_GNSS_MODE = 22,
+    FLOW_GLOBAL_VARIABLE_CURRENT_ALTITUDE_VALUE = 23
 };
 
 // Native global variables
@@ -88,6 +89,8 @@ extern float get_var_current_course_over_ground();
 extern void set_var_current_course_over_ground(float value);
 extern const char *get_var_gnss_mode();
 extern void set_var_gnss_mode(const char *value);
+extern float get_var_current_altitude_value();
+extern void set_var_current_altitude_value(float value);
 
 
 #ifdef __cplusplus

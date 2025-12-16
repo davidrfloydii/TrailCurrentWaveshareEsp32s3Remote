@@ -31,6 +31,7 @@ typedef struct _objects_t {
     lv_obj_t *label_current_speed_value;
     lv_obj_t *label_number_of_satellite_value;
     lv_obj_t *gnss_mode_value;
+    lv_obj_t *label_altitude_in_feet_value;
     lv_obj_t *power_page_bottom_nav_bar;
     lv_obj_t *power_page_bottom_nav_bar__bottom_nav_bar_button_home;
     lv_obj_t *power_page_bottom_nav_bar__bottom_nav_bar_button_trailer;

@@ -178,3 +178,13 @@ void set_var_gnss_mode(const char *value) {
     gnss_mode[sizeof(gnss_mode) / sizeof(char) - 1] = 0;
     lv_label_set_text(objects.gnss_mode_value, value);
 }
+
+
+float current_altitude_value;
+float get_var_current_altitude_value() {
+    return current_altitude_value;
+}
+void set_var_current_altitude_value(float value) {
+    current_altitude_value = value;
+    lv_label_set_text(objects.label_altitude_in_feet_value, String(value).c_str());
+}
