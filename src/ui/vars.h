@@ -33,7 +33,8 @@ enum FlowGlobalVariables {
     FLOW_GLOBAL_VARIABLE_PDM01_DEVICE05_STATUS = 15,
     FLOW_GLOBAL_VARIABLE_PDM01_DEVICE06_STATUS = 16,
     FLOW_GLOBAL_VARIABLE_PDM01_DEVICE07_STATUS = 17,
-    FLOW_GLOBAL_VARIABLE_PDM01_DEVICE08_STATUS = 18
+    FLOW_GLOBAL_VARIABLE_PDM01_DEVICE08_STATUS = 18,
+    FLOW_GLOBAL_VARIABLE_MCU_MAC_ADDRESS = 19
 };
 
 // Native global variables
@@ -76,6 +77,8 @@ extern int32_t get_var_pdm01_device07_status();
 extern void set_var_pdm01_device07_status(int32_t value);
 extern int32_t get_var_pdm01_device08_status();
 extern void set_var_pdm01_device08_status(int32_t value);
+extern const char *get_var_mcu_mac_address();
+extern void set_var_mcu_mac_address(const char *value);
 
 
 #ifdef __cplusplus

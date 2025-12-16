@@ -601,7 +601,7 @@ void remove_style_label_circle_button(lv_obj_t *obj) {
 
 void init_style_label_default_MAIN_DEFAULT(lv_style_t *style) {
     lv_style_set_text_color(style, lv_color_hex(theme_colors[active_theme_index][9]));
-    lv_style_set_text_font(style, &lv_font_montserrat_14);
+    lv_style_set_text_font(style, &lv_font_montserrat_24);
 };
 
 lv_style_t *get_style_label_default_MAIN_DEFAULT() {

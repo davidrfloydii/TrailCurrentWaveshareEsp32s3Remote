@@ -137,3 +137,13 @@ void set_var_current_speed_value(int32_t value) {
     current_speed_value = value;
     lv_label_set_text(objects.label_current_speed_value, String(value).c_str());
 }
+
+char mcu_mac_address[100] = { 0 };
+const char *get_var_mcu_mac_address() {
+    return mcu_mac_address;
+}
+void set_var_mcu_mac_address(const char *value) {
+    strncpy(mcu_mac_address, value, sizeof(mcu_mac_address) / sizeof(char));
+    mcu_mac_address[sizeof(mcu_mac_address) / sizeof(char) - 1] = 0;
+    lv_label_set_text(objects.mcu_mac_address_value, value);
+}

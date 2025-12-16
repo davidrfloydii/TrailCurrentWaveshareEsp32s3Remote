@@ -42,7 +42,25 @@ String success;
 
 namespace espNowHelper
 {
-
+    void readMacAddress()
+    {
+        uint8_t baseMac[6];
+        char buffer[100];
+        esp_err_t ret = esp_wifi_get_mac(WIFI_IF_STA, baseMac);
+        if (ret == ESP_OK)
+        {
+            Serial.printf("%02x:%02x:%02x:%02x:%02x:%02x\n",
+                          baseMac[0], baseMac[1], baseMac[2],
+                          baseMac[3], baseMac[4], baseMac[5]);
+            snprintf(buffer, sizeof(buffer), "%02x:%02x:%02x:%02x:%02x:%02x", baseMac[0], baseMac[1], baseMac[2],
+                          baseMac[3], baseMac[4], baseMac[5]);
+                          set_var_mcu_mac_address(buffer);
+        }
+        else
+        {
+            debugln("Failed to read MAC address");
+        }
+    }
     // Decode a latitude or longitude float value from a 4-byte array with the first byte as sign
     float decodeLatOrLonValue(const byte in[4])
     {
@@ -54,7 +72,7 @@ namespace espNowHelper
         float f = scaled / 10000.0f;
         if (in[0] == 1)
             f = -f;
-        Serial.println(f, 5);
+        debugln(f, 5);
         return f;
     }
     // Method that can be used to decode date and time data from a CAN message
@@ -85,7 +103,8 @@ namespace espNowHelper
         // Set variables based on incoming data for indicators as to which pdm devices are
         // currently turned on or have a value > 255
         uint32_t incomingIdentifier = incomingMessage.identifier;
-        if (incomingIdentifier == 7) { // Speed & Course Message  
+        if (incomingIdentifier == 7)
+        { // Speed & Course Message
             int32_t scaledSpeed =
                 ((uint32_t)incomingMessage.dataByte0 << 8) |
                 (uint32_t)incomingMessage.dataByte1;
@@ -94,13 +113,17 @@ namespace espNowHelper
             debug("Speed (knots): ");
             debugln((int32_t)speedMph);
             set_var_current_speed_value((int32_t)speedMph);
-        } else if (incomingIdentifier == 8) {
+        }
+        else if (incomingIdentifier == 8)
+        {
             uint32_t scaledVoltage =
                 ((uint32_t)incomingMessage.dataByte0 << 24) |
                 ((uint32_t)incomingMessage.dataByte1 << 16) |
                 ((uint32_t)incomingMessage.dataByte2 << 8) |
                 (uint32_t)incomingMessage.dataByte3;
-        } else {
+        }
+        else
+        {
             debug("Unknown Identifier: ");
             debugln(incomingIdentifier);
         }
@@ -132,7 +155,7 @@ namespace espNowHelper
         // Init ESP-NOW
         if (esp_now_init() != ESP_OK)
         {
-            Serial.println("Error initializing ESP-NOW");
+            debugln("Error initializing ESP-NOW");
             return;
         }
 
@@ -148,10 +171,11 @@ namespace espNowHelper
         // Add peer
         if (esp_now_add_peer(&peerInfo) != ESP_OK)
         {
-            Serial.println("Failed to add peer");
+            debugln("Failed to add peer");
             return;
         }
         // Register for a callback function that will be called when data is received
         esp_now_register_recv_cb(esp_now_recv_cb_t(OnDataRecv));
+        readMacAddress();
     }
 }

@@ -6,7 +6,7 @@
 // If DEBUG = 0 then the lines will be removed by the compiler.
 #if DEBUG == 1
 #define debug(x) Serial0.print(x)
-#define debugln(x) Serial0.println(x)
+#define debugln(x,...) Serial0.println(x, ##__VA_ARGS__)
 #define debugf(fmt, ...) Serial0.print((fmt), ##__VA_ARGS__)
 #define debugg(x, y, z) Serial0.printf(x, y, z)
 #define debugh(x,y) Serial0.print(x,y)

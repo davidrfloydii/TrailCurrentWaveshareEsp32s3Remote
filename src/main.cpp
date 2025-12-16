@@ -4,6 +4,7 @@
 #include <ESP_Panel_Library.h>
 #include <ESP_IOExpander_Library.h>
 #include "ui/ui.h"
+#include "espNowHelper.h"
 
 // Extend IO Pin define
 #define TP_RST 1
@@ -195,7 +196,7 @@ void setup()
 
     /* Release the mutex */
     lvgl_port_unlock();
-
+    espNowHelper::initialize();
     debugln("Setup done");
 }
 
