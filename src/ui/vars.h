@@ -38,7 +38,8 @@ enum FlowGlobalVariables {
     FLOW_GLOBAL_VARIABLE_NUMBER_OF_SATELLITES = 20,
     FLOW_GLOBAL_VARIABLE_CURRENT_COURSE_OVER_GROUND = 21,
     FLOW_GLOBAL_VARIABLE_GNSS_MODE = 22,
-    FLOW_GLOBAL_VARIABLE_CURRENT_ALTITUDE_VALUE = 23
+    FLOW_GLOBAL_VARIABLE_CURRENT_ALTITUDE_VALUE = 23,
+    FLOW_GLOBAL_VARIABLE_CURRENT_DATE_TIME = 24
 };
 
 // Native global variables
@@ -47,10 +48,10 @@ extern int32_t get_var_battery_soc_percentage();
 extern void set_var_battery_soc_percentage(int32_t value);
 extern float get_var_battery_voltage();
 extern void set_var_battery_voltage(float value);
-extern const char *get_var_current_latitude();
-extern void set_var_current_latitude(const char *value);
-extern const char *get_var_current_longitude();
-extern void set_var_current_longitude(const char *value);
+extern float get_var_current_latitude();
+extern void set_var_current_latitude(float value);
+extern float get_var_current_longitude();
+extern void set_var_current_longitude(float value);
 extern const char *get_var_current_power_consumption_in_watts();
 extern void set_var_current_power_consumption_in_watts(const char *value);
 extern int32_t get_var_current_speed_value();
@@ -91,6 +92,8 @@ extern const char *get_var_gnss_mode();
 extern void set_var_gnss_mode(const char *value);
 extern float get_var_current_altitude_value();
 extern void set_var_current_altitude_value(float value);
+extern const char *get_var_current_date_time();
+extern void set_var_current_date_time(const char *value);
 
 
 #ifdef __cplusplus

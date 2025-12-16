@@ -41,6 +41,7 @@ typedef struct _objects_t {
     lv_obj_t *label_warning_text_stabilizers;
     lv_obj_t *label_warning_icon_power;
     lv_obj_t *label_warning_text_power;
+    lv_obj_t *label_current_date_time_value;
     lv_obj_t *trailer_page_bottom_nav_bar;
     lv_obj_t *trailer_page_bottom_nav_bar__bottom_nav_bar_button_home;
     lv_obj_t *trailer_page_bottom_nav_bar__bottom_nav_bar_button_trailer;
@@ -52,6 +53,8 @@ typedef struct _objects_t {
     lv_obj_t *label_number_of_satellite_value;
     lv_obj_t *gnss_mode_value;
     lv_obj_t *label_altitude_in_feet_value;
+    lv_obj_t *label_current_lat_value;
+    lv_obj_t *label_current_long_value;
     lv_obj_t *power_page_bottom_nav_bar;
     lv_obj_t *power_page_bottom_nav_bar__bottom_nav_bar_button_home;
     lv_obj_t *power_page_bottom_nav_bar__bottom_nav_bar_button_trailer;

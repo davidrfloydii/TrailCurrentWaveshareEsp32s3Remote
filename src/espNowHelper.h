@@ -60,34 +60,45 @@ namespace espNowHelper
         {
             debugln("Failed to read MAC address");
         }
+        return;
     }
-    // Decode a latitude or longitude float value from a 4-byte array with the first byte as sign
-    float decodeLatOrLonValue(const byte in[4])
-    {
-        uint32_t scaled =
-            ((uint32_t)in[1] << 16) |
-            ((uint32_t)in[2] << 8) |
-            (uint32_t)in[3];
 
-        float f = scaled / 10000.0f;
-        if (in[0] == 1)
-            f = -f;
-        debugln(f, 5);
-        return f;
-    }
-    // Method that can be used to decode date and time data from a CAN message
-    void decodeDateTimeData(const byte in[8], uint16_t &year, uint8_t &month, uint8_t &day, uint8_t &hour, uint8_t &minute, uint8_t &second)
+    void processDateTimeData(esp_now_message_t &incomingMessage)
     {
-        year = ((uint16_t)in[0] << 8) | (uint16_t)in[1];
-        month = in[2];
-        day = in[3];
-        hour = in[4];
-        minute = in[5];
-        second = in[6];
+        uint16_t year;
+        uint8_t month, day, hour, minute, second;
+        year = ((uint16_t)incomingMessage.dataByte0 << 8) | (uint16_t)incomingMessage.dataByte1;
+        month = incomingMessage.dataByte2;
+        day = incomingMessage.dataByte3;
+        hour = incomingMessage.dataByte4;
+        minute = incomingMessage.dataByte5;
+        second = incomingMessage.dataByte6;
+        char currentDateTime[20];
+        snprintf(currentDateTime, sizeof(currentDateTime), "%04d-%02d-%02d %02d:%02d:%02d",
+                 year, month, day, hour, minute, second);
+        set_var_current_date_time(currentDateTime);
+        return;
     }
 
     void processLatLonData(esp_now_message_t &incomingMessage)
     {
+        byte latBytes[4];
+        latBytes[0] = incomingMessage.dataByte0;
+        latBytes[1] = incomingMessage.dataByte1;
+        latBytes[2] = incomingMessage.dataByte2;
+        latBytes[3] = incomingMessage.dataByte3;
+        byte lonBytes[4];
+        lonBytes[0] = incomingMessage.dataByte4;
+        lonBytes[1] = incomingMessage.dataByte5;
+        lonBytes[2] = incomingMessage.dataByte6;
+        lonBytes[3] = incomingMessage.dataByte7;
+        float latitude;
+        float longitude;
+        memcpy(&latitude, latBytes, sizeof(float));
+        memcpy(&longitude, lonBytes, sizeof(float));
+        set_var_current_latitude(latitude);
+        set_var_current_longitude(longitude);
+        return;
     }
 
     void processSatAndSpeedData(esp_now_message_t &incomingMessage)
@@ -148,6 +159,7 @@ namespace espNowHelper
             set_var_gnss_mode("Unknown");
             break;
         }
+        return;
     }
 
     void processAltitudeData(esp_now_message_t &incomingMessage)
@@ -160,6 +172,7 @@ namespace espNowHelper
         double altitude = scaled / 100.0;
         double altitudeFeet = altitude * 3.28084;
         set_var_current_altitude_value((float)altitudeFeet);
+        return;
     }
 
     void processPdm01Data(esp_now_message_t &incomingMessage)
@@ -172,6 +185,7 @@ namespace espNowHelper
         set_var_pdm01_device06_status(incomingMessage.dataByte2);
         set_var_pdm01_device07_status(incomingMessage.dataByte1);
         set_var_pdm01_device08_status(incomingMessage.dataByte0);
+        return;
     }
 
     // Callback when data is received
@@ -183,17 +197,17 @@ namespace espNowHelper
         uint32_t incomingIdentifier = incomingMessage.identifier;
         switch (incomingIdentifier)
         {
-        case 5:
-            debugln("Received GPS Lat/Lon Message");
-            break;
         case 6:
-            debugln("Received Date/Time Message");
+            processDateTimeData(incomingMessage);
             break;
         case 7:
             processSatAndSpeedData(incomingMessage);
             break;
         case 8:
             processAltitudeData(incomingMessage);
+            break;
+        case 9:
+            processLatLonData(incomingMessage);
             break;
         case 27:
             processPdm01Data(incomingMessage);
@@ -211,6 +225,8 @@ namespace espNowHelper
             debugln("Received Solar Charge Controller Message");
             break;
         default:
+            debug("Unknown Identifier Received: ");
+            debugln(incomingIdentifier);
             break;
         }
     }

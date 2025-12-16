@@ -299,3 +299,36 @@ void set_var_current_altitude_value(float value) {
     current_altitude_value = value;
     lv_label_set_text(objects.label_altitude_in_feet_value, String(value).c_str());
 }
+
+float current_latitude;
+float get_var_current_latitude() {
+    return current_latitude;
+}
+void set_var_current_latitude(float value) {
+    current_latitude = value;
+    char latString[16];
+    dtostrf(value, 10, 6, latString);
+    lv_label_set_text(objects.label_current_lat_value, latString);
+}
+
+float current_longitude;
+float get_var_current_longitude() {
+    return current_longitude;
+}
+void set_var_current_longitude(float value) {
+    current_longitude = value;
+    char lonString[16];
+    dtostrf(value, 11, 6, lonString);
+    lv_label_set_text(objects.label_current_long_value, lonString);
+}
+
+
+char current_date_time[100] = { 0 };
+const char *get_var_current_date_time() {
+    return current_date_time;
+}
+void set_var_current_date_time(const char *value) {
+    strncpy(current_date_time, value, sizeof(current_date_time) / sizeof(char));
+    current_date_time[sizeof(current_date_time) / sizeof(char) - 1] = 0;
+    lv_label_set_text(objects.label_current_date_time_value, value);
+}
