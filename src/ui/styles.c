@@ -176,8 +176,8 @@ void init_style_button_list_menu_item_MAIN_DEFAULT(lv_style_t *style) {
     lv_style_set_bg_opa(style, 0);
     lv_style_set_border_width(style, 0);
     lv_style_set_text_font(style, &lv_font_montserrat_16);
-    lv_style_set_min_height(style, 40);
-    lv_style_set_max_height(style, 40);
+    lv_style_set_min_height(style, 60);
+    lv_style_set_max_height(style, 60);
     lv_style_set_text_color(style, lv_color_hex(theme_colors[active_theme_index][9]));
     lv_style_set_border_opa(style, 0);
     lv_style_set_outline_width(style, 0);
@@ -772,6 +772,10 @@ void remove_style_label_fa_icon_active(lv_obj_t *obj) {
 
 void init_style_label_list_menu_item_MAIN_DEFAULT(lv_style_t *style) {
     lv_style_set_text_align(style, LV_TEXT_ALIGN_LEFT);
+    lv_style_set_text_font(style, &lv_font_montserrat_18);
+    lv_style_set_pad_top(style, 10);
+    lv_style_set_pad_bottom(style, 10);
+    lv_style_set_align(style, LV_ALIGN_LEFT_MID);
 };
 
 lv_style_t *get_style_label_list_menu_item_MAIN_DEFAULT() {

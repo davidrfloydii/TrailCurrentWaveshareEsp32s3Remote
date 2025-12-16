@@ -1187,33 +1187,6 @@ void create_screen_settings() {
             lv_obj_set_style_align(obj, LV_ALIGN_BOTTOM_LEFT, LV_PART_MAIN | LV_STATE_DEFAULT);
         }
         {
-            // SettingsPageLatitudeLabel
-            lv_obj_t *obj = lv_label_create(parent_obj);
-            objects.settings_page_latitude_label = obj;
-            lv_obj_set_pos(obj, 541, 146);
-            lv_obj_set_size(obj, LV_SIZE_CONTENT, LV_SIZE_CONTENT);
-            add_style_label_default(obj);
-            lv_label_set_text(obj, "Latitude:");
-        }
-        {
-            // SettingsPageLatitudeValue
-            lv_obj_t *obj = lv_label_create(parent_obj);
-            objects.settings_page_latitude_value = obj;
-            lv_obj_set_pos(obj, 620, 146);
-            lv_obj_set_size(obj, LV_SIZE_CONTENT, LV_SIZE_CONTENT);
-            add_style_label_default(obj);
-            lv_label_set_text(obj, "0.000");
-        }
-        {
-            // SettingsPageLongitudeValue
-            lv_obj_t *obj = lv_label_create(parent_obj);
-            objects.settings_page_longitude_value = obj;
-            lv_obj_set_pos(obj, 640, 175);
-            lv_obj_set_size(obj, LV_SIZE_CONTENT, LV_SIZE_CONTENT);
-            add_style_label_default(obj);
-            lv_label_set_text(obj, "0.000");
-        }
-        {
             lv_obj_t *obj = lv_list_create(parent_obj);
             lv_obj_set_pos(obj, 0, 0);
             lv_obj_set_size(obj, 160, 420);
@@ -1223,48 +1196,55 @@ void create_screen_settings() {
                 {
                     lv_obj_t *obj = lv_btn_create(parent_obj);
                     lv_obj_set_pos(obj, 0, 0);
-                    lv_obj_set_size(obj, LV_PCT(100), 50);
+                    lv_obj_set_size(obj, LV_PCT(100), 40);
+                    lv_obj_add_event_cb(obj, action_settings_selection_change, LV_EVENT_PRESSED, (void *)0);
                     add_style_button_list_menu_item(obj);
+                    lv_obj_set_style_pad_top(obj, 10, LV_PART_MAIN | LV_STATE_DEFAULT);
+                    lv_obj_set_style_pad_bottom(obj, 10, LV_PART_MAIN | LV_STATE_DEFAULT);
                     {
                         lv_obj_t *parent_obj = obj;
                         {
                             lv_obj_t *obj = lv_label_create(parent_obj);
                             lv_obj_set_pos(obj, 0, 0);
-                            lv_obj_set_size(obj, LV_SIZE_CONTENT, LV_SIZE_CONTENT);
+                            lv_obj_set_size(obj, LV_PCT(100), LV_SIZE_CONTENT);
                             add_style_label_list_menu_item(obj);
-                            lv_label_set_text(obj, "Button");
+                            lv_obj_set_style_align(obj, LV_ALIGN_LEFT_MID, LV_PART_MAIN | LV_STATE_DEFAULT);
+                            lv_label_set_text(obj, "Display");
                         }
                     }
                 }
                 {
                     lv_obj_t *obj = lv_btn_create(parent_obj);
-                    lv_obj_set_pos(obj, 0, 0);
-                    lv_obj_set_size(obj, LV_PCT(100), 50);
+                    lv_obj_set_pos(obj, 0, 5);
+                    lv_obj_set_size(obj, LV_PCT(100), 40);
+                    lv_obj_add_event_cb(obj, action_settings_selection_change, LV_EVENT_PRESSED, (void *)1);
                     add_style_button_list_menu_item(obj);
                     {
                         lv_obj_t *parent_obj = obj;
                         {
                             lv_obj_t *obj = lv_label_create(parent_obj);
                             lv_obj_set_pos(obj, 0, 0);
-                            lv_obj_set_size(obj, LV_SIZE_CONTENT, LV_SIZE_CONTENT);
+                            lv_obj_set_size(obj, LV_PCT(100), LV_SIZE_CONTENT);
                             add_style_label_list_menu_item(obj);
-                            lv_label_set_text(obj, "Button");
-                        }
-                    }
-                }
-                {
-                    lv_obj_t *obj = lv_btn_create(parent_obj);
-                    lv_obj_set_pos(obj, 0, 0);
-                    lv_obj_set_size(obj, LV_PCT(100), 50);
-                    add_style_button_list_menu_item(obj);
-                    {
-                        lv_obj_t *parent_obj = obj;
-                        {
-                            lv_obj_t *obj = lv_label_create(parent_obj);
-                            lv_obj_set_pos(obj, 0, 0);
-                            lv_obj_set_size(obj, LV_SIZE_CONTENT, LV_SIZE_CONTENT);
-                            add_style_label_list_menu_item(obj);
+                            lv_obj_set_style_align(obj, LV_ALIGN_LEFT_MID, LV_PART_MAIN | LV_STATE_DEFAULT);
                             lv_label_set_text(obj, "About");
+                        }
+                    }
+                }
+                {
+                    lv_obj_t *obj = lv_btn_create(parent_obj);
+                    lv_obj_set_pos(obj, 0, 80);
+                    lv_obj_set_size(obj, LV_PCT(100), 40);
+                    lv_obj_add_event_cb(obj, action_settings_selection_change, LV_EVENT_PRESSED, (void *)2);
+                    add_style_button_list_menu_item(obj);
+                    {
+                        lv_obj_t *parent_obj = obj;
+                        {
+                            lv_obj_t *obj = lv_label_create(parent_obj);
+                            lv_obj_set_pos(obj, 0, 0);
+                            lv_obj_set_size(obj, LV_PCT(100), LV_SIZE_CONTENT);
+                            add_style_label_list_menu_item(obj);
+                            lv_label_set_text(obj, "Demo");
                         }
                     }
                 }
@@ -1469,10 +1449,37 @@ void create_screen_settings() {
             {
                 lv_obj_t *parent_obj = obj;
                 {
+                    // SettingsPageLatitudeLabel
+                    lv_obj_t *obj = lv_label_create(parent_obj);
+                    objects.settings_page_latitude_label = obj;
+                    lv_obj_set_pos(obj, -7, 106);
+                    lv_obj_set_size(obj, LV_SIZE_CONTENT, LV_SIZE_CONTENT);
+                    add_style_label_default(obj);
+                    lv_label_set_text(obj, "Latitude:");
+                }
+                {
+                    // SettingsPageLongitudeValue
+                    lv_obj_t *obj = lv_label_create(parent_obj);
+                    objects.settings_page_longitude_value = obj;
+                    lv_obj_set_pos(obj, 139, 149);
+                    lv_obj_set_size(obj, LV_SIZE_CONTENT, LV_SIZE_CONTENT);
+                    add_style_label_default(obj);
+                    lv_label_set_text(obj, "0.000");
+                }
+                {
+                    // SettingsPageLatitudeValue
+                    lv_obj_t *obj = lv_label_create(parent_obj);
+                    objects.settings_page_latitude_value = obj;
+                    lv_obj_set_pos(obj, 123, 106);
+                    lv_obj_set_size(obj, LV_SIZE_CONTENT, LV_SIZE_CONTENT);
+                    add_style_label_default(obj);
+                    lv_label_set_text(obj, "0.000");
+                }
+                {
                     // SettingsPageLongitudeLabel
                     lv_obj_t *obj = lv_label_create(parent_obj);
                     objects.settings_page_longitude_label = obj;
-                    lv_obj_set_pos(obj, 400, 67);
+                    lv_obj_set_pos(obj, -6, 148);
                     lv_obj_set_size(obj, LV_SIZE_CONTENT, LV_SIZE_CONTENT);
                     add_style_label_default(obj);
                     lv_label_set_text(obj, "Longitude:");
@@ -1496,12 +1503,28 @@ void create_screen_settings() {
                     add_style_label_default(obj);
                     lv_label_set_text(obj, "X.X.X");
                 }
+                {
+                    lv_obj_t *obj = lv_label_create(parent_obj);
+                    lv_obj_set_pos(obj, -6, 195);
+                    lv_obj_set_size(obj, LV_SIZE_CONTENT, LV_SIZE_CONTENT);
+                    add_style_label_default(obj);
+                    lv_label_set_text(obj, "Mac Address:");
+                }
+                {
+                    // McuMacAddressValue
+                    lv_obj_t *obj = lv_label_create(parent_obj);
+                    objects.mcu_mac_address_value = obj;
+                    lv_obj_set_pos(obj, 166, 195);
+                    lv_obj_set_size(obj, LV_SIZE_CONTENT, LV_SIZE_CONTENT);
+                    add_style_label_default(obj);
+                    lv_label_set_text(obj, "00:00:00:00:00:00");
+                }
             }
         }
         {
-            // ConatinerDemoSettings
+            // ContainerDemoSettings
             lv_obj_t *obj = lv_obj_create(parent_obj);
-            objects.conatiner_demo_settings = obj;
+            objects.container_demo_settings = obj;
             lv_obj_set_pos(obj, 160, 0);
             lv_obj_set_size(obj, 640, 420);
             lv_obj_set_style_pad_left(obj, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
@@ -1516,7 +1539,7 @@ void create_screen_settings() {
                 lv_obj_t *parent_obj = obj;
                 {
                     lv_obj_t *obj = lv_label_create(parent_obj);
-                    lv_obj_set_pos(obj, 10, 10);
+                    lv_obj_set_pos(obj, 20, 12);
                     lv_obj_set_size(obj, LV_SIZE_CONTENT, LV_SIZE_CONTENT);
                     add_style_label_default(obj);
                     lv_label_set_text(obj, "Light Sequence");
@@ -1525,8 +1548,8 @@ void create_screen_settings() {
                     // ButtonSettingsDemoLightSequenceStart
                     lv_obj_t *obj = lv_btn_create(parent_obj);
                     objects.button_settings_demo_light_sequence_start = obj;
-                    lv_obj_set_pos(obj, 10, 40);
-                    lv_obj_set_size(obj, 100, 50);
+                    lv_obj_set_pos(obj, 18, 61);
+                    lv_obj_set_size(obj, 126, 50);
                     add_style_style_button_default(obj);
                     {
                         lv_obj_t *parent_obj = obj;
@@ -1544,8 +1567,8 @@ void create_screen_settings() {
                     // ButtonSettingsDemoLightSequenceStop
                     lv_obj_t *obj = lv_btn_create(parent_obj);
                     objects.button_settings_demo_light_sequence_stop = obj;
-                    lv_obj_set_pos(obj, 120, 40);
-                    lv_obj_set_size(obj, 100, 50);
+                    lv_obj_set_pos(obj, 161, 61);
+                    lv_obj_set_size(obj, 139, 50);
                     add_style_style_button_default(obj);
                     {
                         lv_obj_t *parent_obj = obj;
@@ -1560,22 +1583,6 @@ void create_screen_settings() {
                     }
                 }
             }
-        }
-        {
-            lv_obj_t *obj = lv_label_create(parent_obj);
-            lv_obj_set_pos(obj, 171, 338);
-            lv_obj_set_size(obj, LV_SIZE_CONTENT, LV_SIZE_CONTENT);
-            add_style_label_default(obj);
-            lv_label_set_text(obj, "Mac Address");
-        }
-        {
-            // McuMacAddressValue
-            lv_obj_t *obj = lv_label_create(parent_obj);
-            objects.mcu_mac_address_value = obj;
-            lv_obj_set_pos(obj, 175, 375);
-            lv_obj_set_size(obj, LV_SIZE_CONTENT, LV_SIZE_CONTENT);
-            add_style_label_default(obj);
-            lv_label_set_text(obj, "00:00:00:00:00:00");
         }
     }
     

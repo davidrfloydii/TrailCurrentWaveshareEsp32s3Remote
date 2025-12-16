@@ -5,6 +5,23 @@
 #include "ui/screens.h"
 #include "ui/styles.h"
 
+void action_settings_selection_change(lv_event_t *e) {
+    int menuSelection = (int)lv_event_get_user_data(e);
+    lv_obj_add_flag(objects.container_display_settings,LV_OBJ_FLAG_HIDDEN); // Hide by default
+    lv_obj_add_flag(objects.container_about_settings,LV_OBJ_FLAG_HIDDEN); // Hide by default
+    lv_obj_add_flag(objects.container_demo_settings,LV_OBJ_FLAG_HIDDEN); // Hide by default
+    if (menuSelection == 0) {
+        lv_obj_clear_flag(objects.panel_brightness_adjustment, LV_OBJ_FLAG_HIDDEN);
+    } else if (menuSelection == 1) {
+        lv_obj_clear_flag(objects.container_about_settings, LV_OBJ_FLAG_HIDDEN); 
+    } else if (menuSelection == 2)
+    {
+        lv_obj_clear_flag(objects.container_demo_settings, LV_OBJ_FLAG_HIDDEN);
+    }
+    
+}
+
+
 void action_change_screen(lv_event_t *e)
 {
     Serial.print("Changing screen to ID: ");

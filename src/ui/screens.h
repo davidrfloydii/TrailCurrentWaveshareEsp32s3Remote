@@ -123,9 +123,6 @@ typedef struct _objects_t {
     lv_obj_t *setting_page_bottom_nav_bar__botttom_nav_bar_button_solar;
     lv_obj_t *setting_page_bottom_nav_bar__botttom_nav_bar_button_fridge;
     lv_obj_t *setting_page_bottom_nav_bar__botttom_nav_bar_button_settings;
-    lv_obj_t *settings_page_latitude_label;
-    lv_obj_t *settings_page_latitude_value;
-    lv_obj_t *settings_page_longitude_value;
     lv_obj_t *container_display_settings;
     lv_obj_t *lbl_device08_status_ind_3;
     lv_obj_t *slider_display_brightness;
@@ -139,13 +136,16 @@ typedef struct _objects_t {
     lv_obj_t *label_screen_timeout_value;
     lv_obj_t *button_screen_timeout_increase;
     lv_obj_t *container_about_settings;
+    lv_obj_t *settings_page_latitude_label;
+    lv_obj_t *settings_page_longitude_value;
+    lv_obj_t *settings_page_latitude_value;
     lv_obj_t *settings_page_longitude_label;
     lv_obj_t *label_about_header;
     lv_obj_t *label_version_number;
-    lv_obj_t *conatiner_demo_settings;
+    lv_obj_t *mcu_mac_address_value;
+    lv_obj_t *container_demo_settings;
     lv_obj_t *button_settings_demo_light_sequence_start;
     lv_obj_t *button_settings_demo_light_sequence_stop;
-    lv_obj_t *mcu_mac_address_value;
 } objects_t;
 
 extern objects_t objects;
