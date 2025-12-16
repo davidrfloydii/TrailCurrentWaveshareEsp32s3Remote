@@ -85,17 +85,95 @@ namespace espNowHelper
         minute = in[5];
         second = in[6];
     }
-    // Method that can be used to decode altitude data from a CAN message
-    void decodeAltitudeData(const byte in[4])
+
+    void processLatLonData(esp_now_message_t &incomingMessage)
     {
-        double altitude = 0.0;
-        uint32_t scaled =
-            ((uint32_t)in[0] << 24) |
-            ((uint32_t)in[1] << 16) |
-            ((uint32_t)in[2] << 8) |
-            (uint32_t)in[3];
-        altitude = scaled / 100.0;
     }
+
+    void processSatAndSpeedData(esp_now_message_t &incomingMessage)
+    {
+        // Number of satellites used
+        int8_t numSats = incomingMessage.dataByte0;
+        set_var_number_of_satellites(numSats);
+        // Speed & Course Message
+        int32_t scaledSpeed =
+            ((uint32_t)incomingMessage.dataByte1 << 8) |
+            (uint32_t)incomingMessage.dataByte2;
+        float speedKnots = scaledSpeed / 100.0f;
+        float speedMph = speedKnots * 1.15078f;
+        set_var_current_speed_value((int32_t)speedMph);
+
+        uint32_t scaledCourse =
+            ((uint32_t)incomingMessage.dataByte3 << 8) |
+            (uint32_t)incomingMessage.dataByte4;
+        float courseDegrees = scaledCourse / 100.0f;
+        set_var_current_course_over_ground(courseDegrees);
+        uint8_t gnssMode = incomingMessage.dataByte5;
+        /**
+         * @fn getGnssMode
+         * @brief Get the used gnss mode
+         * @return mode
+         * @retval 1  gps
+         * @retval 2  beidou
+         * @retval 3  gps + beidou
+         * @retval 4  glonass
+         * @retval 5  gps + glonass
+         * @retval 6  beidou +glonass
+         * @retval 7  gps + beidou + glonass
+         */
+        switch (gnssMode)
+        {
+        case 1:
+            set_var_gnss_mode("GPS");
+            break;
+        case 2:
+            set_var_gnss_mode("Beidou");
+            break;
+        case 3:
+            set_var_gnss_mode("GPS + Beidou");
+            break;
+        case 4:
+            set_var_gnss_mode("GLONASS");
+            break;
+        case 5:
+            set_var_gnss_mode("GPS + GLONASS");
+            break;
+        case 6:
+            set_var_gnss_mode("Beidou + GLONASS");
+            break;
+        case 7:
+            set_var_gnss_mode("GPS + Beidou + GLONASS");
+            break;
+        default:
+            set_var_gnss_mode("Unknown");
+            break;
+        }
+    }
+
+    void processAltitudeData(esp_now_message_t &incomingMessage)
+    {
+        uint32_t scaled =
+            ((uint32_t)incomingMessage.dataByte0 << 24) |
+            ((uint32_t)incomingMessage.dataByte1 << 16) |
+            ((uint32_t)incomingMessage.dataByte2 << 8) |
+            (uint32_t)incomingMessage.dataByte3;
+        double altitude = scaled / 100.0;
+        double altitudeFeet = altitude * 3.28084;
+        set_var_current_altitude_value((float)altitudeFeet);
+    }
+
+    void processPdm01Data(esp_now_message_t &incomingMessage)
+    {
+        set_var_pdm01_device01_status(incomingMessage.dataByte4);
+        set_var_pdm01_device02_status(incomingMessage.dataByte7);
+        set_var_pdm01_device03_status(incomingMessage.dataByte6);
+        set_var_pdm01_device04_status(incomingMessage.dataByte5);
+        set_var_pdm01_device05_status(incomingMessage.dataByte3);
+        set_var_pdm01_device06_status(incomingMessage.dataByte2);
+        set_var_pdm01_device07_status(incomingMessage.dataByte1);
+        set_var_pdm01_device08_status(incomingMessage.dataByte0);
+    }
+
     // Callback when data is received
     void OnDataRecv(const uint8_t *mac, const uint8_t *incomingData, int len)
     {
@@ -103,93 +181,37 @@ namespace espNowHelper
         // Set variables based on incoming data for indicators as to which pdm devices are
         // currently turned on or have a value > 255
         uint32_t incomingIdentifier = incomingMessage.identifier;
-        if (incomingIdentifier == 5)
+        switch (incomingIdentifier)
         {
+        case 5:
             debugln("Received GPS Lat/Lon Message");
-        }
-        else if (incomingIdentifier == 6)
-        {
+            break;
+        case 6:
             debugln("Received Date/Time Message");
-        }
-        else if (incomingIdentifier == 7)
-        {
-            // Number of satellites used
-            int8_t numSats = incomingMessage.dataByte0;
-            set_var_number_of_satellites(numSats);
-            // Speed & Course Message
-            int32_t scaledSpeed =
-                ((uint32_t)incomingMessage.dataByte1 << 8) |
-                (uint32_t)incomingMessage.dataByte2;
-            float speedKnots = scaledSpeed / 100.0f;
-            float speedMph = speedKnots * 1.15078f;
-            set_var_current_speed_value((int32_t)speedMph);
-
-            uint32_t scaledCourse =
-                ((uint32_t)incomingMessage.dataByte3 << 8) |
-                (uint32_t)incomingMessage.dataByte4;
-            float courseDegrees = scaledCourse / 100.0f;
-            set_var_current_course_over_ground(courseDegrees);
-            uint8_t gnssMode = incomingMessage.dataByte5;
-            /**
-             * @fn getGnssMode
-             * @brief Get the used gnss mode
-             * @return mode
-             * @retval 1  gps
-             * @retval 2  beidou
-             * @retval 3  gps + beidou
-             * @retval 4  glonass
-             * @retval 5  gps + glonass
-             * @retval 6  beidou +glonass
-             * @retval 7  gps + beidou + glonass
-             */
-            if (gnssMode == 1)
-            {
-                set_var_gnss_mode("GPS");
-            }
-            else if (gnssMode == 2)
-            {
-                set_var_gnss_mode("Beidou");
-            }
-            else if (gnssMode == 3)
-            {
-                set_var_gnss_mode("GPS + Beidou");
-            }
-            else if (gnssMode == 4)
-            {
-                set_var_gnss_mode("GLONASS");
-            }
-            else if (gnssMode == 5)
-            {
-                set_var_gnss_mode("GPS + GLONASS");
-            }
-            else if (gnssMode == 6)
-            {
-                set_var_gnss_mode("Beidou + GLONASS");
-            }
-            else if (gnssMode == 7)
-            {
-                set_var_gnss_mode("GPS + Beidou + GLONASS");
-            }
-            else
-            {
-                set_var_gnss_mode("Unknown");
-            }
-        }
-        else if (incomingIdentifier == 8)
-        {
-            uint32_t scaled =
-                ((uint32_t)incomingMessage.dataByte0 << 24) |
-                ((uint32_t)incomingMessage.dataByte1 << 16) |
-                ((uint32_t)incomingMessage.dataByte2 << 8) |
-                (uint32_t)incomingMessage.dataByte3;
-            double altitude = scaled / 100.0;
-            double altitudeFeet = altitude * 3.28084;
-            set_var_current_altitude_value((float)altitudeFeet);
-        }
-        else
-        {
-            debug("Unknown Identifier: ");
-            debugln(incomingIdentifier);
+            break;
+        case 7:
+            processSatAndSpeedData(incomingMessage);
+            break;
+        case 8:
+            processAltitudeData(incomingMessage);
+            break;
+        case 27:
+            processPdm01Data(incomingMessage);
+            break;
+        case 31:
+            debugln("Received Temperature and Humidity Message");
+            break;
+        case 35:
+            debugln("Battery Voltage and SOC Message Received");
+            break;
+        case 36:
+            debugln("Recieved Shunt Data Message");
+            break;
+        case 44:
+            debugln("Received Solar Charge Controller Message");
+            break;
+        default:
+            break;
         }
     }
 

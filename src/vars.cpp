@@ -36,73 +36,184 @@ void set_var_shore_power_connection_status(const char *value) {
 }
 
 
-
-int32_t pdm01_device08_status;
-int32_t get_var_pdm01_device08_status() {
-    return pdm01_device08_status;
+int32_t pdm01_device01_status;
+int32_t get_var_pdm01_device01_status()
+{
+    return pdm01_device01_status;
 }
-void set_var_pdm01_device08_status(int32_t value) {
-    pdm01_device08_status = value;
-}
-
-
-int32_t pdm01_device07_status;
-int32_t get_var_pdm01_device07_status() {
-    return pdm01_device07_status;
-}
-void set_var_pdm01_device07_status(int32_t value) {
-    pdm01_device07_status = value;
-}
-
-
-int32_t pdm01_device06_status;
-int32_t get_var_pdm01_device06_status() {
-    return pdm01_device06_status;
-}
-void set_var_pdm01_device06_status(int32_t value) {
-    pdm01_device06_status = value;
-}
-
-
-int32_t pdm01_device05_status;
-int32_t get_var_pdm01_device05_status() {
-    return pdm01_device05_status;
-}
-void set_var_pdm01_device05_status(int32_t value) {
-    pdm01_device05_status = value;
-}
-
-int32_t pdm01_device04_status;
-int32_t get_var_pdm01_device04_status() {
-    return pdm01_device04_status;
-}
-void set_var_pdm01_device04_status(int32_t value) {
-    pdm01_device04_status = value;
-}
-
-int32_t pdm01_device03_status;
-int32_t get_var_pdm01_device03_status() {
-    return pdm01_device03_status;
-}
-void set_var_pdm01_device03_status(int32_t value) {
-    pdm01_device03_status = value;
+void set_var_pdm01_device01_status(int32_t value)
+{
+    pdm01_device01_status = value;
+    if (value > 0)
+    {
+        lv_obj_add_state(objects.lbl_device01_status_ind, LV_STATE_CHECKED);
+        lv_obj_add_state(objects.btn_device01, LV_STATE_CHECKED);
+        lv_obj_add_state(objects.lbl_device01_label, LV_STATE_CHECKED);
+    }
+    else
+    {
+        lv_obj_clear_state(objects.btn_device01, LV_STATE_CHECKED);
+        lv_obj_clear_state(objects.lbl_device01_status_ind, LV_STATE_CHECKED);
+        lv_obj_clear_state(objects.lbl_device01_label, LV_STATE_CHECKED);
+    }
 }
 
 int32_t pdm01_device02_status;
-int32_t get_var_pdm01_device02_status() {
+int32_t get_var_pdm01_device02_status()
+{
     return pdm01_device02_status;
 }
-void set_var_pdm01_device02_status(int32_t value) {
+void set_var_pdm01_device02_status(int32_t value)
+{
     pdm01_device02_status = value;
+    if (value > 0)
+    {
+        lv_obj_add_state(objects.lbl_device02_status_ind, LV_STATE_CHECKED);
+        lv_obj_add_state(objects.btn_device02, LV_STATE_CHECKED);
+        lv_obj_add_state(objects.lbl_device02_label, LV_STATE_CHECKED);
+    }
+    else
+    {
+        lv_obj_clear_state(objects.btn_device02, LV_STATE_CHECKED);
+        lv_obj_clear_state(objects.lbl_device02_status_ind, LV_STATE_CHECKED);
+        lv_obj_clear_state(objects.lbl_device02_label, LV_STATE_CHECKED);
+    }
 }
 
-int32_t pdm01_device01_status;
-int32_t get_var_pdm01_device01_status() {
-    return pdm01_device01_status;
+int32_t pdm01_device03_status;
+int32_t get_var_pdm01_device03_status()
+{
+    return pdm01_device03_status;
 }
-void set_var_pdm01_device01_status(int32_t value) {
-    pdm01_device01_status = value;
+void set_var_pdm01_device03_status(int32_t value)
+{
+    pdm01_device03_status = value;
+    if (value > 0)
+    {
+        lv_obj_add_state(objects.lbl_device03_status_ind, LV_STATE_CHECKED);
+        lv_obj_add_state(objects.btn_device03, LV_STATE_CHECKED);
+        lv_obj_add_state(objects.lbl_device03_label, LV_STATE_CHECKED);
+    }
+    else
+    {
+        lv_obj_clear_state(objects.btn_device03, LV_STATE_CHECKED);
+        lv_obj_clear_state(objects.lbl_device03_status_ind, LV_STATE_CHECKED);
+        lv_obj_clear_state(objects.lbl_device03_label, LV_STATE_CHECKED);
+    }
 }
+
+int32_t pdm01_device04_status;
+int32_t get_var_pdm01_device04_status()
+{
+    return pdm01_device04_status;
+}
+void set_var_pdm01_device04_status(int32_t value)
+{
+    pdm01_device04_status = value;
+    if (value > 0)
+    {
+        lv_obj_add_state(objects.lbl_device04_status_ind, LV_STATE_CHECKED);
+        lv_obj_add_state(objects.btn_device04, LV_STATE_CHECKED);
+        lv_obj_add_state(objects.lbl_device04_label, LV_STATE_CHECKED);
+    }
+    else
+    {
+        lv_obj_clear_state(objects.btn_device04, LV_STATE_CHECKED);
+        lv_obj_clear_state(objects.lbl_device04_status_ind, LV_STATE_CHECKED);
+        lv_obj_clear_state(objects.lbl_device04_label, LV_STATE_CHECKED);
+    }
+}
+
+int32_t pdm01_device05_status;
+int32_t get_var_pdm01_device05_status()
+{
+    return pdm01_device05_status;
+}
+void set_var_pdm01_device05_status(int32_t value)
+{
+    pdm01_device05_status = value;
+    if (value > 0)
+    {
+        lv_obj_add_state(objects.lbl_device05_status_ind, LV_STATE_CHECKED);
+        lv_obj_add_state(objects.btn_device05, LV_STATE_CHECKED);
+        lv_obj_add_state(objects.lbl_device05_label, LV_STATE_CHECKED);
+    }
+    else
+    {
+        lv_obj_clear_state(objects.btn_device05, LV_STATE_CHECKED);
+        lv_obj_clear_state(objects.lbl_device05_status_ind, LV_STATE_CHECKED);
+        lv_obj_clear_state(objects.lbl_device05_label, LV_STATE_CHECKED);
+    }
+}
+
+int32_t pdm01_device06_status;
+int32_t get_var_pdm01_device06_status()
+{
+    return pdm01_device06_status;
+}
+void set_var_pdm01_device06_status(int32_t value)
+{
+    pdm01_device06_status = value;
+    if (value > 0)
+    {
+        lv_obj_add_state(objects.lbl_device06_status_ind, LV_STATE_CHECKED);
+        lv_obj_add_state(objects.btn_device06, LV_STATE_CHECKED);
+        lv_obj_add_state(objects.lbl_device06_label, LV_STATE_CHECKED);
+    }
+    else
+    {
+        lv_obj_clear_state(objects.btn_device06, LV_STATE_CHECKED);
+        lv_obj_clear_state(objects.lbl_device06_status_ind, LV_STATE_CHECKED);
+        lv_obj_clear_state(objects.lbl_device06_label, LV_STATE_CHECKED);
+    }
+}
+
+int32_t pdm01_device07_status;
+int32_t get_var_pdm01_device07_status()
+{
+    return pdm01_device07_status;
+}
+void set_var_pdm01_device07_status(int32_t value)
+{
+    pdm01_device07_status = value;
+    if (value > 0)
+    {
+        lv_obj_add_state(objects.lbl_device07_status_ind, LV_STATE_CHECKED);
+        lv_obj_add_state(objects.btn_device07, LV_STATE_CHECKED);
+        lv_obj_add_state(objects.lbl_device07_label, LV_STATE_CHECKED);
+    }
+    else
+    {
+        lv_obj_clear_state(objects.btn_device07, LV_STATE_CHECKED);
+        lv_obj_clear_state(objects.lbl_device07_status_ind, LV_STATE_CHECKED);
+        lv_obj_clear_state(objects.lbl_device07_label, LV_STATE_CHECKED);
+    }
+}
+
+int32_t pdm01_device08_status;
+int32_t get_var_pdm01_device08_status()
+{
+    return pdm01_device08_status;
+}
+void set_var_pdm01_device08_status(int32_t value)
+{
+    pdm01_device08_status = value;
+    if (value > 0)
+    {
+        lv_obj_add_state(objects.lbl_device08_status_ind, LV_STATE_CHECKED);
+        lv_obj_add_state(objects.btn_device08, LV_STATE_CHECKED);
+        lv_obj_add_state(objects.lbl_device08_label, LV_STATE_CHECKED);
+    }
+    else
+    {
+        lv_obj_clear_state(objects.btn_device08, LV_STATE_CHECKED);
+        lv_obj_clear_state(objects.lbl_device08_status_ind, LV_STATE_CHECKED);
+        lv_obj_clear_state(objects.lbl_device08_label, LV_STATE_CHECKED);
+    }
+}
+
+
+
 
 float battery_voltage;
 float get_var_battery_voltage() {

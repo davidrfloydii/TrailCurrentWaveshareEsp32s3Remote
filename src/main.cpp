@@ -202,5 +202,19 @@ void setup()
 
 void loop()
 {
+    if ((get_var_pdm01_device01_status() > 0) || (get_var_pdm01_device02_status() > 0)|| (get_var_pdm01_device03_status() > 0) || (get_var_pdm01_device04_status() > 0) || (get_var_pdm01_device05_status() > 0) || (get_var_pdm01_device08_status() > 0)) {
+        lv_obj_add_state(objects.label_warning_icon_lights,LV_STATE_CHECKED);
+        lv_obj_add_state(objects.label_warning_text_lights,LV_STATE_CHECKED);
+    } else {
+        lv_obj_clear_state(objects.label_warning_icon_lights,LV_STATE_CHECKED);
+        lv_obj_clear_state(objects.label_warning_text_lights,LV_STATE_CHECKED);
+    }
+    if (get_var_pdm01_device07_status() > 0) {
+        lv_obj_add_state(objects.label_warning_icon_water,LV_STATE_CHECKED);
+        lv_obj_add_state(objects.label_warning_text_water,LV_STATE_CHECKED);
+    } else {
+        lv_obj_clear_state(objects.label_warning_icon_water,LV_STATE_CHECKED);
+        lv_obj_clear_state(objects.label_warning_text_water,LV_STATE_CHECKED);
+    }
     sleep(1);
 }
