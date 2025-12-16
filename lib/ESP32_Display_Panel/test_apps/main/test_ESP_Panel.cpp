@@ -165,7 +165,7 @@ TEST_CASE("test read touch", "[panel][touch]")
         bool touched = panel->getLcdTouch()->getTouchState();
         if (touched) {
             TouchPoint point = panel->getLcdTouch()->getPoint();
-            ESP_LOGI(TAG, "Touch point: x %d, y %d\n", point.x, point.y);
+            // ESP_LOGI(TAG, "Touch point: x %d, y %d\n", point.x, point.y);
         }
         vTaskDelay(pdMS_TO_TICKS(30));
     }

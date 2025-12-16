@@ -201,6 +201,5 @@ void setup()
 
 void loop()
 {
-    debugln("Loop");
     sleep(1);
 }
