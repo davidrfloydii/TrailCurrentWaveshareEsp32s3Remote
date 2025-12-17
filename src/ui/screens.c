@@ -1831,6 +1831,84 @@ void create_screen_settings() {
                         }
                     }
                 }
+                {
+                    // LabelScreenTimeout
+                    lv_obj_t *obj = lv_label_create(parent_obj);
+                    objects.label_screen_timeout = obj;
+                    lv_obj_set_pos(obj, -1, 160);
+                    lv_obj_set_size(obj, LV_SIZE_CONTENT, LV_SIZE_CONTENT);
+                    add_style_label_default(obj);
+                    lv_obj_set_style_align(obj, LV_ALIGN_TOP_LEFT, LV_PART_MAIN | LV_STATE_DEFAULT);
+                    lv_label_set_text(obj, "Screen Timeout (Minutes)");
+                }
+                {
+                    // ButtonScreenTimeoutDecrease
+                    lv_obj_t *obj = lv_btn_create(parent_obj);
+                    objects.button_screen_timeout_decrease = obj;
+                    lv_obj_set_pos(obj, 0, 200);
+                    lv_obj_set_size(obj, 100, 50);
+                    lv_obj_add_event_cb(obj, action_timeout_changed, LV_EVENT_PRESSED, (void *)0);
+                    add_style_style_button_default(obj);
+                    {
+                        lv_obj_t *parent_obj = obj;
+                        {
+                            lv_obj_t *obj = lv_label_create(parent_obj);
+                            lv_obj_set_pos(obj, 0, 0);
+                            lv_obj_set_size(obj, LV_SIZE_CONTENT, LV_SIZE_CONTENT);
+                            add_style_label_default(obj);
+                            lv_obj_set_style_align(obj, LV_ALIGN_CENTER, LV_PART_MAIN | LV_STATE_DEFAULT);
+                            lv_obj_set_style_text_font(obj, &ui_font_fa32, LV_PART_MAIN | LV_STATE_DEFAULT);
+                            lv_label_set_text(obj, "\uf068");
+                        }
+                    }
+                }
+                {
+                    // LabelScreenTimeoutValue
+                    lv_obj_t *obj = lv_label_create(parent_obj);
+                    objects.label_screen_timeout_value = obj;
+                    lv_obj_set_pos(obj, 135, 210);
+                    lv_obj_set_size(obj, LV_SIZE_CONTENT, LV_SIZE_CONTENT);
+                    add_style_label_default(obj);
+                    lv_obj_set_style_text_align(obj, LV_TEXT_ALIGN_CENTER, LV_PART_MAIN | LV_STATE_DEFAULT);
+                    lv_label_set_text(obj, "1");
+                }
+                {
+                    // ButtonScreenTimeoutIncrease
+                    lv_obj_t *obj = lv_btn_create(parent_obj);
+                    objects.button_screen_timeout_increase = obj;
+                    lv_obj_set_pos(obj, 189, 200);
+                    lv_obj_set_size(obj, 100, 50);
+                    lv_obj_add_event_cb(obj, action_timeout_changed, LV_EVENT_PRESSED, (void *)1);
+                    add_style_style_button_default(obj);
+                    lv_obj_set_style_text_font(obj, &ui_font_fa32, LV_PART_MAIN | LV_STATE_DEFAULT);
+                    {
+                        lv_obj_t *parent_obj = obj;
+                        {
+                            lv_obj_t *obj = lv_label_create(parent_obj);
+                            lv_obj_set_pos(obj, 0, 0);
+                            lv_obj_set_size(obj, LV_SIZE_CONTENT, LV_SIZE_CONTENT);
+                            add_style_label_default(obj);
+                            lv_obj_set_style_align(obj, LV_ALIGN_CENTER, LV_PART_MAIN | LV_STATE_DEFAULT);
+                            lv_obj_set_style_text_font(obj, &ui_font_fa32, LV_PART_MAIN | LV_STATE_DEFAULT);
+                            lv_label_set_text(obj, "+");
+                        }
+                    }
+                }
+                {
+                    // CheckBoxKeepScreenOnWhileInMotion
+                    lv_obj_t *obj = lv_checkbox_create(parent_obj);
+                    objects.check_box_keep_screen_on_while_in_motion = obj;
+                    lv_obj_set_pos(obj, 0, 300);
+                    lv_obj_set_size(obj, LV_SIZE_CONTENT, LV_SIZE_CONTENT);
+                    lv_checkbox_set_text(obj, "Keep on while in motion");
+                    lv_obj_add_event_cb(obj, action_keep_on_while_driving_changed, LV_EVENT_RELEASED, (void *)0);
+                    lv_obj_clear_flag(obj, LV_OBJ_FLAG_GESTURE_BUBBLE|LV_OBJ_FLAG_PRESS_LOCK|LV_OBJ_FLAG_SCROLLABLE|LV_OBJ_FLAG_SCROLL_CHAIN_HOR|LV_OBJ_FLAG_SCROLL_CHAIN_VER|LV_OBJ_FLAG_SCROLL_ELASTIC|LV_OBJ_FLAG_SCROLL_MOMENTUM|LV_OBJ_FLAG_SCROLL_ON_FOCUS|LV_OBJ_FLAG_SCROLL_WITH_ARROW|LV_OBJ_FLAG_SNAPPABLE);
+                    lv_obj_add_state(obj, LV_STATE_CHECKED);
+                    add_style_checkbox_default(obj);
+                    lv_obj_set_style_text_font(obj, &lv_font_montserrat_22, LV_PART_MAIN | LV_STATE_DEFAULT);
+                    lv_obj_set_style_pad_top(obj, 10, LV_PART_MAIN | LV_STATE_DEFAULT);
+                    lv_obj_set_style_pad_bottom(obj, 10, LV_PART_MAIN | LV_STATE_DEFAULT);
+                }
             }
         }
         {

@@ -400,50 +400,86 @@ void set_var_current_date_time(const char *value)
     lv_label_set_text(objects.label_current_date_time_value, date_time_local);
 }
 
-
 float current_temperature_value;
-float get_var_current_temperature_value() {
+float get_var_current_temperature_value()
+{
     return current_temperature_value;
 }
-void set_var_current_temperature_value(float value) {
+void set_var_current_temperature_value(float value)
+{
     current_temperature_value = value;
     lv_bar_set_value(objects.bar_interior_temperature, (int32_t)value, LV_ANIM_ON);
-    lv_label_set_text(objects.label_interior_temp_value, String(value,0).c_str());
+    lv_label_set_text(objects.label_interior_temp_value, String(value, 0).c_str());
 }
 
 float current_humidity_value;
-float get_var_current_humidity_value() {
+float get_var_current_humidity_value()
+{
     return current_humidity_value;
 }
-void set_var_current_humidity_value(float value) {
+void set_var_current_humidity_value(float value)
+{
     current_humidity_value = value;
     lv_arc_set_value(objects.arc_relative_humidity, (int16_t)value);
     lv_label_set_text(objects.label_humidty_level, String(value).c_str());
 }
 
-
 bool user_settings_changed;
-bool get_var_user_settings_changed() {
+bool get_var_user_settings_changed()
+{
     return user_settings_changed;
 }
-void set_var_user_settings_changed(bool value) {
+void set_var_user_settings_changed(bool value)
+{
     user_settings_changed = value;
 }
 
 int selected_theme;
-int get_var_selected_theme() {
+int get_var_selected_theme()
+{
     return selected_theme;
 }
-void set_var_selected_theme(int value) {
+void set_var_selected_theme(int value)
+{
     selected_theme = value;
     lv_obj_clear_state(objects.btn_theme_dark, LV_STATE_CHECKED);
     lv_obj_clear_state(objects.btn_theme_light, LV_STATE_CHECKED);
-    if (selected_theme == 0) {
+    if (selected_theme == 0)
+    {
         change_color_theme(THEME_ID_DEFAULT);
         lv_obj_add_state(objects.btn_theme_light, LV_STATE_CHECKED);
-    } 
-    else if (selected_theme == 1) {
+    }
+    else if (selected_theme == 1)
+    {
         change_color_theme(THEME_ID_DARK);
         lv_obj_add_state(objects.btn_theme_dark, LV_STATE_CHECKED);
+    }
+}
+
+int32_t screen_timeout_value;
+int32_t get_var_screen_timeout_value()
+{
+    return screen_timeout_value;
+}
+void set_var_screen_timeout_value(int32_t value)
+{
+    screen_timeout_value = value;
+    lv_label_set_text(objects.label_screen_timeout_value, String(value).c_str());
+}
+
+bool keep_screen_on_while_driving;
+bool get_var_keep_screen_on_while_driving()
+{
+    return keep_screen_on_while_driving;
+}
+void set_var_keep_screen_on_while_driving(bool value)
+{
+    keep_screen_on_while_driving = value;
+    debug("Keep on ");
+    debugln(value);
+    if (value) {
+        lv_obj_add_state(objects.check_box_keep_screen_on_while_in_motion,LV_STATE_CHECKED);
+    } else {
+        lv_obj_clear_state(objects.check_box_keep_screen_on_while_in_motion,LV_STATE_CHECKED);
     }
 }

@@ -43,7 +43,9 @@ enum FlowGlobalVariables {
     FLOW_GLOBAL_VARIABLE_CURRENT_TEMPERATURE_VALUE = 25,
     FLOW_GLOBAL_VARIABLE_CURRENT_HUMIDITY_VALUE = 26,
     FLOW_GLOBAL_VARIABLE_USER_SETTINGS_CHANGED = 27,
-    FLOW_GLOBAL_VARIABLE_SELECTED_THEME = 28
+    FLOW_GLOBAL_VARIABLE_SELECTED_THEME = 28,
+    FLOW_GLOBAL_VARIABLE_SCREEN_TIMEOUT_VALUE = 29,
+    FLOW_GLOBAL_VARIABLE_KEEP_SCREEN_ON_WHILE_DRIVING = 30
 };
 
 // Native global variables
@@ -106,6 +108,10 @@ extern bool get_var_user_settings_changed();
 extern void set_var_user_settings_changed(bool value);
 extern int32_t get_var_selected_theme();
 extern void set_var_selected_theme(int32_t value);
+extern int32_t get_var_screen_timeout_value();
+extern void set_var_screen_timeout_value(int32_t value);
+extern bool get_var_keep_screen_on_while_driving();
+extern void set_var_keep_screen_on_while_driving(bool value);
 
 
 #ifdef __cplusplus

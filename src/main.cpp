@@ -211,19 +211,26 @@ void setup()
     // Start by reading saved preferences in from NVM
     preferences.begin("user_settings", false);
     int savedTheme = preferences.getInt("selectedTheme", 0);
+    int screenTimeout = preferences.getInt("screenTimeout",0);
+    bool keepScreenOnWhileDriving = preferences.getBool("onWhileDriving",true);
     set_var_selected_theme(savedTheme);
-    
+    set_var_screen_timeout_value(screenTimeout);
+    set_var_keep_screen_on_while_driving(keepScreenOnWhileDriving);
     // Set the version number label
     lv_label_set_text(objects.label_version_number, CURRENT_VERSION);
 }
 
 void loop()
 {
+    // If settings have changed we need to persist them
     if (get_var_user_settings_changed())
     {
         int selectedTheme = get_var_selected_theme();
-        debugln("New theme index: " + String(selectedTheme));
+        int screenTimeout = get_var_screen_timeout_value();
+        bool keepScreenOnWhileDriving = get_var_keep_screen_on_while_driving();        
         preferences.putInt("selectedTheme", selectedTheme);
+        preferences.putInt("screenTimeout",screenTimeout);
+        preferences.putBool("onWhileDriving",keepScreenOnWhileDriving);
         set_var_user_settings_changed(false);
     }
     unsigned long currentStatusCheckMillis = millis();

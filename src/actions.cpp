@@ -111,3 +111,24 @@ void action_change_screen(lv_event_t *e)
         lv_obj_add_state(objects.setting_page_bottom_nav_bar__botttom_nav_bar_button_settings, LV_STATE_CHECKED);
     }
 }
+
+
+void action_timeout_changed(lv_event_t *e) {
+     set_var_user_settings_changed(true);
+     int currentTimeoutValue = get_var_screen_timeout_value();
+     int eventValue = (int)lv_event_get_user_data(e);
+     if (eventValue == 0) {
+        currentTimeoutValue--;
+     } else {
+        currentTimeoutValue++;
+     }
+     set_var_screen_timeout_value(currentTimeoutValue);
+}
+
+void action_keep_on_while_driving_changed(lv_event_t *e) {
+     set_var_user_settings_changed(true); 
+     bool keepScreenOnWhileDriving = lv_obj_has_state(objects.check_box_keep_screen_on_while_in_motion,LV_STATE_CHECKED);
+     debug("Keep on?");
+     debugln(keepScreenOnWhileDriving);
+     set_var_keep_screen_on_while_driving(keepScreenOnWhileDriving);
+}

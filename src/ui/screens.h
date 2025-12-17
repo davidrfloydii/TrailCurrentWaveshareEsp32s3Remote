@@ -156,6 +156,11 @@ typedef struct _objects_t {
     lv_obj_t *lbl_device08_status_ind_5;
     lv_obj_t *btn_theme_dark;
     lv_obj_t *lbl_device08_status_ind_6;
+    lv_obj_t *label_screen_timeout;
+    lv_obj_t *button_screen_timeout_decrease;
+    lv_obj_t *label_screen_timeout_value;
+    lv_obj_t *button_screen_timeout_increase;
+    lv_obj_t *check_box_keep_screen_on_while_in_motion;
     lv_obj_t *container_about_settings;
     lv_obj_t *label_about_header;
     lv_obj_t *label_version_number;
