@@ -198,6 +198,7 @@ void setup()
     lvgl_port_unlock();
     espNowHelper::initialize();
     debugln("Setup done");
+    lv_label_set_text(objects.label_version_number, CURRENT_VERSION);
 }
 
 void loop()

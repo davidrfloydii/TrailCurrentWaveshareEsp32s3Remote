@@ -1,6 +1,8 @@
 #pragma once
 #include <Arduino.h>
 
+#define CURRENT_VERSION "0.0.1"
+
 #define DEBUG 1
 // Conditional definition for debugging if DEBUG is 1 then it will print to serial port.
 // If DEBUG = 0 then the lines will be removed by the compiler.

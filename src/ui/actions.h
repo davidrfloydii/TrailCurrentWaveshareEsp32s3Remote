@@ -9,6 +9,7 @@ extern "C" {
 
 extern void action_change_screen(lv_event_t * e);
 extern void action_settings_selection_change(lv_event_t * e);
+extern void action_change_theme(lv_event_t * e);
 
 
 #ifdef __cplusplus
