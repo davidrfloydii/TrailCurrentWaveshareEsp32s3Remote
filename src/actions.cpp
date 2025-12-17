@@ -28,10 +28,16 @@ void action_settings_selection_change(lv_event_t *e)
 void action_change_theme(lv_event_t *e)
 {
     int themeIndex = (int)lv_event_get_user_data(e);
-    if (themeIndex == 0)
+    lv_obj_clear_state(objects.btn_theme_dark, LV_STATE_CHECKED);
+    lv_obj_clear_state(objects.btn_theme_light, LV_STATE_CHECKED);
+    if (themeIndex == 0) {
         change_color_theme(THEME_ID_DEFAULT);
-    else if (themeIndex == 1)       
+        lv_obj_add_state(objects.btn_theme_light, LV_STATE_CHECKED);
+    } 
+    else if (themeIndex == 1) {
         change_color_theme(THEME_ID_DARK);
+        lv_obj_add_state(objects.btn_theme_dark, LV_STATE_CHECKED);
+    }
 }
 
 void action_change_screen(lv_event_t *e)
