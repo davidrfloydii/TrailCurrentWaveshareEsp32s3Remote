@@ -30,7 +30,7 @@
           },
           {
             "type": "border",
-            "selected": 1,
+            "selected": 3,
             "size": 240,
             "location": "right",
             "children": [

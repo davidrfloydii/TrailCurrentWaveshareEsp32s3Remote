@@ -389,11 +389,11 @@ void set_var_current_date_time(const char *value)
 
         // Convert to local time zone
         struct tm *tm_local = localtime(&t_utc);
-
+        // TODO: Move formatting to settings and save to NVM
         // Format into local time string
         strftime(date_time_local,
                  sizeof(date_time_local),
-                 "%Y-%m-%d %I:%M:%S %p",
+                 "%m/%d/%Y %I:%M %p",
                  tm_local);
     }
     else
