@@ -39,7 +39,9 @@ enum FlowGlobalVariables {
     FLOW_GLOBAL_VARIABLE_CURRENT_COURSE_OVER_GROUND = 21,
     FLOW_GLOBAL_VARIABLE_GNSS_MODE = 22,
     FLOW_GLOBAL_VARIABLE_CURRENT_ALTITUDE_VALUE = 23,
-    FLOW_GLOBAL_VARIABLE_CURRENT_DATE_TIME = 24
+    FLOW_GLOBAL_VARIABLE_CURRENT_DATE_TIME = 24,
+    FLOW_GLOBAL_VARIABLE_CURRENT_TEMPERATURE_VALUE = 25,
+    FLOW_GLOBAL_VARIABLE_CURRENT_HUMIDITY_VALUE = 26
 };
 
 // Native global variables
@@ -94,6 +96,10 @@ extern float get_var_current_altitude_value();
 extern void set_var_current_altitude_value(float value);
 extern const char *get_var_current_date_time();
 extern void set_var_current_date_time(const char *value);
+extern float get_var_current_temperature_value();
+extern void set_var_current_temperature_value(float value);
+extern float get_var_current_humidity_value();
+extern void set_var_current_humidity_value(float value);
 
 
 #ifdef __cplusplus

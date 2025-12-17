@@ -1527,9 +1527,9 @@ void create_screen_air() {
                     {
                         lv_obj_t *parent_obj = obj;
                         {
-                            // LabelPowerBatteryPercentage_1
+                            // LabelInteriorTempValue
                             lv_obj_t *obj = lv_label_create(parent_obj);
-                            objects.label_power_battery_percentage_1 = obj;
+                            objects.label_interior_temp_value = obj;
                             lv_obj_set_pos(obj, 0, -20);
                             lv_obj_set_size(obj, LV_SIZE_CONTENT, LV_SIZE_CONTENT);
                             add_style_label_default(obj);
@@ -1625,7 +1625,7 @@ void create_screen_air() {
                             add_style_style_panel_default(obj);
                             lv_obj_set_style_align(obj, LV_ALIGN_CENTER, LV_PART_MAIN | LV_STATE_DEFAULT);
                             lv_obj_set_style_radius(obj, 300, LV_PART_MAIN | LV_STATE_DEFAULT);
-                            lv_obj_set_style_bg_color(obj, lv_color_hex(0xff888484), LV_PART_MAIN | LV_STATE_DEFAULT);
+                            lv_obj_set_style_bg_color(obj, lv_color_hex(0xff000000), LV_PART_MAIN | LV_STATE_DEFAULT);
                         }
                         {
                             // LabelRelativeHumidityMeasurementLabel
@@ -2528,7 +2528,7 @@ void change_color_theme(uint32_t theme_index) {
     
     lv_obj_set_style_bg_color(objects.bar_interior_temperature, lv_color_hex(theme_colors[theme_index][5]), LV_PART_INDICATOR | LV_STATE_DEFAULT);
     
-    lv_obj_set_style_text_color(objects.label_power_battery_percentage_1, lv_color_hex(theme_colors[theme_index][7]), LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_text_color(objects.label_interior_temp_value, lv_color_hex(theme_colors[theme_index][7]), LV_PART_MAIN | LV_STATE_DEFAULT);
     
     lv_obj_set_style_text_color(objects.label_air_quality_temp_reading_type_label, lv_color_hex(theme_colors[theme_index][7]), LV_PART_MAIN | LV_STATE_DEFAULT);
     

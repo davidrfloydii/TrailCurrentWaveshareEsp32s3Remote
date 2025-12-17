@@ -135,7 +135,7 @@ typedef struct _objects_t {
     lv_obj_t *obj4;
     lv_obj_t *label_relative_humidity_header_1;
     lv_obj_t *bar_interior_temperature;
-    lv_obj_t *label_power_battery_percentage_1;
+    lv_obj_t *label_interior_temp_value;
     lv_obj_t *label_air_quality_temp_reading_type_label;
     lv_obj_t *panel_relative_humity;
     lv_obj_t *label_relative_humidity_header;

@@ -188,6 +188,24 @@ namespace espNowHelper
         return;
     }
 
+    void processTempAndHumidityData(esp_now_message_t &incomingMessage)
+    {
+        uint8_t tempC = incomingMessage.dataByte0;
+        uint8_t tempF = incomingMessage.dataByte1;
+        set_var_current_temperature_value(tempF);
+        uint8_t humidityHigh = incomingMessage.dataByte2;
+        uint8_t humidityLow = incomingMessage.dataByte3;
+
+        uint16_t humidityScaled =
+            ((uint16_t)humidityHigh << 8) |
+            (uint16_t)humidityLow;
+
+        float humidity = humidityScaled / 100.0f;
+
+        set_var_current_humidity_value(humidity);
+        return;
+    }
+
     // Callback when data is received
     void OnDataRecv(const uint8_t *mac, const uint8_t *incomingData, int len)
     {
@@ -198,7 +216,6 @@ namespace espNowHelper
         switch (incomingIdentifier)
         {
         case 6:
-            debugln("Received DateTime Message");
             processDateTimeData(incomingMessage);
             break;
         case 7:
@@ -214,7 +231,7 @@ namespace espNowHelper
             processPdm01Data(incomingMessage);
             break;
         case 31:
-            debugln("Received Temperature and Humidity Message");
+            processTempAndHumidityData(incomingMessage);
             break;
         case 35:
             debugln("Battery Voltage and SOC Message Received");

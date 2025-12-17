@@ -27,9 +27,6 @@ time_t my_timegm(struct tm *tm)
     // TODO: Move time zone to settings and save to NVM
     setenv("TZ", "CST6CDT,M3.2.0,M11.1.0", 1);
     tzset();
-    debug("TIME: ");
-    debugln(tm->tm_hour);
-    debugln(tm->tm_mday);
     return t;
 }
 
@@ -401,4 +398,25 @@ void set_var_current_date_time(const char *value)
         date_time_local[0] = '\0'; // parsing failed
     }
     lv_label_set_text(objects.label_current_date_time_value, date_time_local);
+}
+
+
+float current_temperature_value;
+float get_var_current_temperature_value() {
+    return current_temperature_value;
+}
+void set_var_current_temperature_value(float value) {
+    current_temperature_value = value;
+    lv_bar_set_value(objects.bar_interior_temperature, (int32_t)value, LV_ANIM_ON);
+    lv_label_set_text(objects.label_interior_temp_value, String(value,0).c_str());
+}
+
+float current_humidity_value;
+float get_var_current_humidity_value() {
+    return current_humidity_value;
+}
+void set_var_current_humidity_value(float value) {
+    current_humidity_value = value;
+    lv_arc_set_value(objects.arc_relative_humidity, (int16_t)value);
+    lv_label_set_text(objects.label_humidty_level, String(value).c_str());
 }

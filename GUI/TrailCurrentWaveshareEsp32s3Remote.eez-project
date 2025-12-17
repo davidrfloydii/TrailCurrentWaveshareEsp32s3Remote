@@ -304,6 +304,22 @@
         "defaultValue": "\"\"",
         "persistent": false,
         "native": false
+      },
+      {
+        "objID": "27a821be-e2fb-4079-fd38-91ad05768da6",
+        "name": "CurrentTemperatureValue",
+        "type": "float",
+        "defaultValue": "0",
+        "persistent": false,
+        "native": false
+      },
+      {
+        "objID": "5245cce5-e850-4488-8345-a80b43028791",
+        "name": "CurrentHumidityValue",
+        "type": "float",
+        "defaultValue": "0",
+        "persistent": false,
+        "native": false
       }
     ],
     "structures": [],
@@ -6651,7 +6667,7 @@
                       },
                       "timeline": [],
                       "eventHandlers": [],
-                      "identifier": "LabelPowerBatteryPercentage_1",
+                      "identifier": "LabelInteriorTempValue",
                       "leftUnit": "px",
                       "topUnit": "px",
                       "widthUnit": "content",
@@ -7031,7 +7047,7 @@
                             "DEFAULT": {
                               "align": "CENTER",
                               "radius": 300,
-                              "bg_color": "#888484"
+                              "bg_color": "BackgroundSelecgted"
                             }
                           }
                         }
