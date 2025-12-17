@@ -198,6 +198,7 @@ namespace espNowHelper
         switch (incomingIdentifier)
         {
         case 6:
+            debugln("Received DateTime Message");
             processDateTimeData(incomingMessage);
             break;
         case 7:
@@ -212,7 +213,7 @@ namespace espNowHelper
         case 27:
             processPdm01Data(incomingMessage);
             break;
-        case 31:
+        case 31:s
             debugln("Received Temperature and Humidity Message");
             break;
         case 35:

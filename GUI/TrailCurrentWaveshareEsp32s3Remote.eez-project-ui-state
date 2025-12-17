@@ -3,7 +3,7 @@
     "selectedUserPageObject": "[TrailCurrentWaveshareEsp32s3Remote.eez-project]:/userPages/1",
     "selectedUserWidgetObject": "[TrailCurrentWaveshareEsp32s3Remote.eez-project]:/userWidgets/0",
     "selectedActionObject": "[TrailCurrentWaveshareEsp32s3Remote.eez-project]:/actions/1",
-    "selectedGlobalVariableObject": "[TrailCurrentWaveshareEsp32s3Remote.eez-project]:/variables/globalVariables/23",
+    "selectedGlobalVariableObject": "[TrailCurrentWaveshareEsp32s3Remote.eez-project]:/variables/globalVariables/24",
     "selectedStyleObject": "[TrailCurrentWaveshareEsp32s3Remote.eez-project]:/lvglStyles/styles/3",
     "selectedThemeObject": "[TrailCurrentWaveshareEsp32s3Remote.eez-project]:/themes/0",
     "selectedThemeColorObject": "[TrailCurrentWaveshareEsp32s3Remote.eez-project]:/colors/11",
@@ -79,6 +79,7 @@
           {
             "type": "border",
             "selected": 0,
+            "size": 116.5,
             "location": "bottom",
             "children": [
               {
@@ -162,7 +163,7 @@
                 {
                   "type": "tabset",
                   "id": "#7914f7cf-7b5f-45a6-92f6-0679c7ef7d66",
-                  "weight": 1.3553113553113554,
+                  "weight": 0.9683377308707124,
                   "enableClose": false,
                   "children": [
                     {
@@ -178,7 +179,7 @@
                 {
                   "type": "tabset",
                   "id": "#414e5f2d-9dcd-4336-a3fa-45307f70c2c4",
-                  "weight": 0.6446886446886447,
+                  "weight": 1.0316622691292876,
                   "enableClose": false,
                   "children": [
                     {
@@ -197,10 +198,21 @@
               "type": "tabset",
               "id": "EDITORS",
               "weight": 49.657990884125944,
-              "selected": 1,
+              "selected": 2,
               "enableDeleteWhenEmpty": false,
               "enableClose": false,
               "children": [
+                {
+                  "type": "tab",
+                  "id": "#8e4581ab-e943-4563-9f37-273c4e061e1f",
+                  "name": "fa32",
+                  "component": "editor",
+                  "config": {
+                    "objectPath": "[TrailCurrentWaveshareEsp32s3Remote.eez-project]:/fonts/1",
+                    "permanent": true
+                  },
+                  "icon": "material:font_download"
+                },
                 {
                   "type": "tab",
                   "id": "#d87571b4-53da-4f98-bc02-818c83f2cff7",
@@ -234,7 +246,8 @@
                   },
                   "icon": "svg:page"
                 }
-              ]
+              ],
+              "active": true
             },
             {
               "type": "row",
@@ -254,8 +267,7 @@
                       "enableClose": false,
                       "icon": "svg:properties"
                     }
-                  ],
-                  "active": true
+                  ]
                 },
                 {
                   "type": "tabset",
@@ -1006,17 +1018,30 @@
     "[TrailCurrentWaveshareEsp32s3Remote.eez-project]:/userPages/0[flow-state]": {
       "selection": {
         "0": {
-          "1": {
+          "0": {},
+          "1": {},
+          "2": {},
+          "3": {},
+          "4": {},
+          "5": {},
+          "6": {
+            "0": {}
+          },
+          "7": {},
+          "8": {},
+          "9": {},
+          "10": {},
+          "11": {
             "$selected": true
           }
         }
       },
       "transform": {
         "translate": {
-          "x": -400,
-          "y": -240
+          "x": -189.0546875,
+          "y": -319
         },
-        "scale": 1
+        "scale": 0.75
       },
       "timeline": {
         "isEditorActive": false,
@@ -1059,16 +1084,16 @@
       "selection": {
         "0": {
           "0": {},
-          "3": {},
-          "9": {
-            "$selected": true
-          }
+          "1": {},
+          "2": {},
+          "8": {},
+          "9": {}
         }
       },
       "transform": {
         "translate": {
-          "x": -314.5552823743205,
-          "y": -129.3600451257237
+          "x": -251.55528237432048,
+          "y": -118.3600451257237
         },
         "scale": 0.75
       },
@@ -1113,7 +1138,16 @@
     "[TrailCurrentWaveshareEsp32s3Remote.eez-project]:/userPages/3[flow-state]": {
       "selection": {
         "0": {
-          "0": {}
+          "0": {},
+          "4": {
+            "1": {}
+          },
+          "5": {
+            "0": {
+              "$selected": true
+            },
+            "1": {}
+          }
         }
       },
       "transform": {
@@ -1134,14 +1168,21 @@
       "selection": {
         "0": {
           "0": {},
-          "1": {},
-          "2": {}
+          "1": {
+            "0": {
+              "$selected": true
+            },
+            "1": {}
+          },
+          "2": {
+            "1": {}
+          }
         }
       },
       "transform": {
         "translate": {
-          "x": -282.7873745391333,
-          "y": -300.2494803770809
+          "x": -222.78737453913328,
+          "y": -325.2494803770809
         },
         "scale": 0.75
       },
@@ -1185,9 +1226,14 @@
     "[TrailCurrentWaveshareEsp32s3Remote.eez-project]:/userWidgets/0[flow-state]": {
       "selection": {
         "0": {
-          "2": {
-            "$selected": true
-          }
+          "0": {},
+          "1": {
+            "0": {
+              "$selected": true
+            }
+          },
+          "2": {},
+          "4": {}
         }
       },
       "transform": {
