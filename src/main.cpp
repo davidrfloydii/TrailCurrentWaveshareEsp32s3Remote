@@ -6,6 +6,9 @@
 #include "ui/ui.h"
 #include "espNowHelper.h"
 
+unsigned long int previousuStatusCheckMillis = 0;
+long uStatusCheckInterval = 33;
+
 // Extend IO Pin define
 #define TP_RST 1
 #define LCD_BL 2
@@ -26,15 +29,15 @@
 // #include <examples/lv_examples.h>
 
 /* LVGL porting configurations */
-#define LVGL_TICK_PERIOD_MS     (2)
-#define LVGL_TASK_MAX_DELAY_MS  (500)
-#define LVGL_TASK_MIN_DELAY_MS  (1)
-#define LVGL_TASK_STACK_SIZE    (4 * 1024)
-#define LVGL_TASK_PRIORITY      (2)
-#define LVGL_BUF_SIZE           (ESP_PANEL_LCD_H_RES * 20)
+#define LVGL_TICK_PERIOD_MS (2)
+#define LVGL_TASK_MAX_DELAY_MS (500)
+#define LVGL_TASK_MIN_DELAY_MS (1)
+#define LVGL_TASK_STACK_SIZE (4 * 1024)
+#define LVGL_TASK_PRIORITY (2)
+#define LVGL_BUF_SIZE (ESP_PANEL_LCD_H_RES * 20)
 
 ESP_Panel *panel = NULL;
-SemaphoreHandle_t lvgl_mux = NULL;                  // LVGL mutex
+SemaphoreHandle_t lvgl_mux = NULL; // LVGL mutex
 
 #if ESP_PANEL_LCD_BUS_TYPE == ESP_PANEL_BUS_TYPE_RGB
 /* Display flushing */
@@ -60,14 +63,17 @@ bool notify_lvgl_flush_ready(void *user_ctx)
 
 #if ESP_PANEL_USE_LCD_TOUCH
 /* Read the touchpad */
-void lvgl_port_tp_read(lv_indev_drv_t * indev, lv_indev_data_t * data)
+void lvgl_port_tp_read(lv_indev_drv_t *indev, lv_indev_data_t *data)
 {
     panel->getLcdTouch()->readData();
 
     bool touched = panel->getLcdTouch()->getTouchState();
-    if(!touched) {
+    if (!touched)
+    {
         data->state = LV_INDEV_STATE_REL;
-    } else {
+    }
+    else
+    {
         TouchPoint point = panel->getLcdTouch()->getPoint();
 
         data->state = LV_INDEV_STATE_PR;
@@ -96,15 +102,19 @@ void lvgl_port_task(void *arg)
     debugln("Starting LVGL task");
 
     uint32_t task_delay_ms = LVGL_TASK_MAX_DELAY_MS;
-    while (1) {
+    while (1)
+    {
         // Lock the mutex due to the LVGL APIs are not thread-safe
         lvgl_port_lock(-1);
         task_delay_ms = lv_timer_handler();
         // Release the mutex
         lvgl_port_unlock();
-        if (task_delay_ms > LVGL_TASK_MAX_DELAY_MS) {
+        if (task_delay_ms > LVGL_TASK_MAX_DELAY_MS)
+        {
             task_delay_ms = LVGL_TASK_MAX_DELAY_MS;
-        } else if (task_delay_ms < LVGL_TASK_MIN_DELAY_MS) {
+        }
+        else if (task_delay_ms < LVGL_TASK_MIN_DELAY_MS)
+        {
             task_delay_ms = LVGL_TASK_MIN_DELAY_MS;
         }
         vTaskDelay(pdMS_TO_TICKS(task_delay_ms));
@@ -133,7 +143,7 @@ void setup()
     uint8_t *buf = (uint8_t *)heap_caps_calloc(1, LVGL_BUF_SIZE * sizeof(lv_color_t), MALLOC_CAP_INTERNAL);
     uint8_t *buf2 = (uint8_t *)heap_caps_calloc(1, LVGL_BUF_SIZE * sizeof(lv_color_t), MALLOC_CAP_INTERNAL);
     assert(buf);
-    lv_disp_draw_buf_init(&draw_buf, buf,buf2, LVGL_BUF_SIZE);
+    lv_disp_draw_buf_init(&draw_buf, buf, buf2, LVGL_BUF_SIZE);
 
     /* Initialize the display device */
     static lv_disp_drv_t disp_drv;
@@ -191,7 +201,6 @@ void setup()
     /* Lock the mutex due to the LVGL APIs are not thread-safe */
     lvgl_port_lock(-1);
 
-    
     ui_init();
 
     /* Release the mutex */
@@ -203,19 +212,30 @@ void setup()
 
 void loop()
 {
-    if ((get_var_pdm01_device01_status() > 0) || (get_var_pdm01_device02_status() > 0)|| (get_var_pdm01_device03_status() > 0) || (get_var_pdm01_device04_status() > 0) || (get_var_pdm01_device05_status() > 0) || (get_var_pdm01_device08_status() > 0)) {
-        lv_obj_add_state(objects.label_warning_icon_lights,LV_STATE_CHECKED);
-        lv_obj_add_state(objects.label_warning_text_lights,LV_STATE_CHECKED);
-    } else {
-        lv_obj_clear_state(objects.label_warning_icon_lights,LV_STATE_CHECKED);
-        lv_obj_clear_state(objects.label_warning_text_lights,LV_STATE_CHECKED);
-    }
-    if (get_var_pdm01_device07_status() > 0) {
-        lv_obj_add_state(objects.label_warning_icon_water,LV_STATE_CHECKED);
-        lv_obj_add_state(objects.label_warning_text_water,LV_STATE_CHECKED);
-    } else {
-        lv_obj_clear_state(objects.label_warning_icon_water,LV_STATE_CHECKED);
-        lv_obj_clear_state(objects.label_warning_text_water,LV_STATE_CHECKED);
+    unsigned long currentStatusCheckMillis = millis();
+    if (currentStatusCheckMillis - previousuStatusCheckMillis >= uStatusCheckInterval)
+    {
+        if ((get_var_pdm01_device01_status() > 0) || (get_var_pdm01_device02_status() > 0) || (get_var_pdm01_device03_status() > 0) || (get_var_pdm01_device04_status() > 0) || (get_var_pdm01_device05_status() > 0) || (get_var_pdm01_device08_status() > 0))
+        {
+            lv_obj_add_state(objects.label_warning_icon_lights, LV_STATE_CHECKED);
+            lv_obj_add_state(objects.label_warning_text_lights, LV_STATE_CHECKED);
+        }
+        else
+        {
+            lv_obj_clear_state(objects.label_warning_icon_lights, LV_STATE_CHECKED);
+            lv_obj_clear_state(objects.label_warning_text_lights, LV_STATE_CHECKED);
+        }
+        if (get_var_pdm01_device07_status() > 0)
+        {
+            lv_obj_add_state(objects.label_warning_icon_water, LV_STATE_CHECKED);
+            lv_obj_add_state(objects.label_warning_text_water, LV_STATE_CHECKED);
+        }
+        else
+        {
+            lv_obj_clear_state(objects.label_warning_icon_water, LV_STATE_CHECKED);
+            lv_obj_clear_state(objects.label_warning_text_water, LV_STATE_CHECKED);
+        }
+        previousuStatusCheckMillis = currentStatusCheckMillis;
     }
     sleep(1);
 }
