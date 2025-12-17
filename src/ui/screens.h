@@ -55,6 +55,8 @@ typedef struct _objects_t {
     lv_obj_t *label_altitude_in_feet_value;
     lv_obj_t *label_current_lat_value;
     lv_obj_t *label_current_long_value;
+    lv_obj_t *obj0;
+    lv_obj_t *obj1;
     lv_obj_t *power_page_bottom_nav_bar;
     lv_obj_t *power_page_bottom_nav_bar__bottom_nav_bar_button_home;
     lv_obj_t *power_page_bottom_nav_bar__bottom_nav_bar_button_trailer;
@@ -90,7 +92,7 @@ typedef struct _objects_t {
     lv_obj_t *lbl_button_all_label;
     lv_obj_t *panel_brightness_adjustment;
     lv_obj_t *button_brightness_dialog_close;
-    lv_obj_t *obj0;
+    lv_obj_t *obj2;
     lv_obj_t *slider_device_brightness_change;
     lv_obj_t *solar_page_bottom_nav_bar;
     lv_obj_t *solar_page_bottom_nav_bar__bottom_nav_bar_button_home;
@@ -122,7 +124,7 @@ typedef struct _objects_t {
     lv_obj_t *label_power_remaining_time_to_go_value;
     lv_obj_t *label_power_remaining;
     lv_obj_t *label_remaining_cacpity_1;
-    lv_obj_t *obj1;
+    lv_obj_t *obj3;
     lv_obj_t *air_page_bottom_nav_bar;
     lv_obj_t *air_page_bottom_nav_bar__bottom_nav_bar_button_home;
     lv_obj_t *air_page_bottom_nav_bar__bottom_nav_bar_button_trailer;
@@ -130,7 +132,7 @@ typedef struct _objects_t {
     lv_obj_t *air_page_bottom_nav_bar__botttom_nav_bar_button_solar;
     lv_obj_t *air_page_bottom_nav_bar__botttom_nav_bar_button_fridge;
     lv_obj_t *air_page_bottom_nav_bar__botttom_nav_bar_button_settings;
-    lv_obj_t *obj2;
+    lv_obj_t *obj4;
     lv_obj_t *label_relative_humidity_header_1;
     lv_obj_t *bar_interior_temperature;
     lv_obj_t *label_power_battery_percentage_1;
