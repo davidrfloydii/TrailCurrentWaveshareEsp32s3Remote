@@ -420,3 +420,30 @@ void set_var_current_humidity_value(float value) {
     lv_arc_set_value(objects.arc_relative_humidity, (int16_t)value);
     lv_label_set_text(objects.label_humidty_level, String(value).c_str());
 }
+
+
+bool user_settings_changed;
+bool get_var_user_settings_changed() {
+    return user_settings_changed;
+}
+void set_var_user_settings_changed(bool value) {
+    user_settings_changed = value;
+}
+
+int selected_theme;
+int get_var_selected_theme() {
+    return selected_theme;
+}
+void set_var_selected_theme(int value) {
+    selected_theme = value;
+    lv_obj_clear_state(objects.btn_theme_dark, LV_STATE_CHECKED);
+    lv_obj_clear_state(objects.btn_theme_light, LV_STATE_CHECKED);
+    if (selected_theme == 0) {
+        change_color_theme(THEME_ID_DEFAULT);
+        lv_obj_add_state(objects.btn_theme_light, LV_STATE_CHECKED);
+    } 
+    else if (selected_theme == 1) {
+        change_color_theme(THEME_ID_DARK);
+        lv_obj_add_state(objects.btn_theme_dark, LV_STATE_CHECKED);
+    }
+}

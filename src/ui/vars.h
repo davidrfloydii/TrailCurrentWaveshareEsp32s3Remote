@@ -41,7 +41,9 @@ enum FlowGlobalVariables {
     FLOW_GLOBAL_VARIABLE_CURRENT_ALTITUDE_VALUE = 23,
     FLOW_GLOBAL_VARIABLE_CURRENT_DATE_TIME = 24,
     FLOW_GLOBAL_VARIABLE_CURRENT_TEMPERATURE_VALUE = 25,
-    FLOW_GLOBAL_VARIABLE_CURRENT_HUMIDITY_VALUE = 26
+    FLOW_GLOBAL_VARIABLE_CURRENT_HUMIDITY_VALUE = 26,
+    FLOW_GLOBAL_VARIABLE_USER_SETTINGS_CHANGED = 27,
+    FLOW_GLOBAL_VARIABLE_SELECTED_THEME = 28
 };
 
 // Native global variables
@@ -100,6 +102,10 @@ extern float get_var_current_temperature_value();
 extern void set_var_current_temperature_value(float value);
 extern float get_var_current_humidity_value();
 extern void set_var_current_humidity_value(float value);
+extern bool get_var_user_settings_changed();
+extern void set_var_user_settings_changed(bool value);
+extern int32_t get_var_selected_theme();
+extern void set_var_selected_theme(int32_t value);
 
 
 #ifdef __cplusplus

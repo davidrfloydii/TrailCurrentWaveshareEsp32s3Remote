@@ -5,7 +5,8 @@
 #include <ESP_IOExpander_Library.h>
 #include "ui/ui.h"
 #include "espNowHelper.h"
-
+#include <Preferences.h>
+Preferences preferences; // NVS storage for user settings
 unsigned long int previousuStatusCheckMillis = 0;
 long uStatusCheckInterval = 33;
 
@@ -207,11 +208,24 @@ void setup()
     lvgl_port_unlock();
     espNowHelper::initialize();
     debugln("Setup done");
+    // Start by reading saved preferences in from NVM
+    preferences.begin("user_settings", false);
+    int savedTheme = preferences.getInt("selectedTheme", 0);
+    set_var_selected_theme(savedTheme);
+    
+    // Set the version number label
     lv_label_set_text(objects.label_version_number, CURRENT_VERSION);
 }
 
 void loop()
 {
+    if (get_var_user_settings_changed())
+    {
+        int selectedTheme = get_var_selected_theme();
+        debugln("New theme index: " + String(selectedTheme));
+        preferences.putInt("selectedTheme", selectedTheme);
+        set_var_user_settings_changed(false);
+    }
     unsigned long currentStatusCheckMillis = millis();
     if (currentStatusCheckMillis - previousuStatusCheckMillis >= uStatusCheckInterval)
     {

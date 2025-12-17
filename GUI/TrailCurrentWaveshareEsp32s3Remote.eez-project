@@ -320,6 +320,22 @@
         "defaultValue": "0",
         "persistent": false,
         "native": false
+      },
+      {
+        "objID": "62fa3c3a-cf1c-4183-867b-ab92b0413a6a",
+        "name": "UserSettingsChanged",
+        "type": "boolean",
+        "defaultValue": "false",
+        "persistent": false,
+        "native": false
+      },
+      {
+        "objID": "8a916d29-a43f-47ff-a8f9-70a24be204c9",
+        "name": "SelectedTheme",
+        "type": "integer",
+        "defaultValue": "0",
+        "persistent": false,
+        "native": false
       }
     ],
     "structures": [],

@@ -3,7 +3,7 @@
     "selectedUserPageObject": "[TrailCurrentWaveshareEsp32s3Remote.eez-project]:/userPages/1",
     "selectedUserWidgetObject": "[TrailCurrentWaveshareEsp32s3Remote.eez-project]:/userWidgets/0",
     "selectedActionObject": "[TrailCurrentWaveshareEsp32s3Remote.eez-project]:/actions/1",
-    "selectedGlobalVariableObject": "[TrailCurrentWaveshareEsp32s3Remote.eez-project]:/variables/globalVariables/24",
+    "selectedGlobalVariableObject": "[TrailCurrentWaveshareEsp32s3Remote.eez-project]:/variables/globalVariables/28",
     "selectedStyleObject": "[TrailCurrentWaveshareEsp32s3Remote.eez-project]:/lvglStyles/styles/3",
     "selectedThemeObject": "[TrailCurrentWaveshareEsp32s3Remote.eez-project]:/themes/0",
     "selectedThemeColorObject": "[TrailCurrentWaveshareEsp32s3Remote.eez-project]:/colors/11",
@@ -190,7 +190,8 @@
                       "enableClose": false,
                       "icon": "svg:variable"
                     }
-                  ]
+                  ],
+                  "active": true
                 }
               ]
             },
@@ -246,8 +247,7 @@
                   },
                   "icon": "svg:page"
                 }
-              ],
-              "active": true
+              ]
             },
             {
               "type": "row",
