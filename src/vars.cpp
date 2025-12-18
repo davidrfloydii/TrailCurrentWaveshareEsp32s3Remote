@@ -530,3 +530,14 @@ int32_t get_var_gateway_mac_address_byte6() {
 void set_var_gateway_mac_address_byte6(int32_t value) {
     gateway_mac_address_byte6 = value;
 }
+
+
+
+char current_time_zone_string[100] = { 0 };
+const char *get_var_current_time_zone_string() {
+    return current_time_zone_string;
+}
+void set_var_current_time_zone_string(const char *value) {
+    strncpy(current_time_zone_string, value, sizeof(current_time_zone_string) / sizeof(char));
+    current_time_zone_string[sizeof(current_time_zone_string) / sizeof(char) - 1] = 0;
+}

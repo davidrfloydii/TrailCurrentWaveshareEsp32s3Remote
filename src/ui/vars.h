@@ -45,7 +45,8 @@ enum FlowGlobalVariables {
     FLOW_GLOBAL_VARIABLE_USER_SETTINGS_CHANGED = 27,
     FLOW_GLOBAL_VARIABLE_SELECTED_THEME = 28,
     FLOW_GLOBAL_VARIABLE_SCREEN_TIMEOUT_VALUE = 29,
-    FLOW_GLOBAL_VARIABLE_KEEP_SCREEN_ON_WHILE_DRIVING = 30
+    FLOW_GLOBAL_VARIABLE_KEEP_SCREEN_ON_WHILE_DRIVING = 30,
+    FLOW_GLOBAL_VARIABLE_CURRENT_TIME_ZONE_STRING = 31
 };
 
 // Native global variables
@@ -124,6 +125,8 @@ extern int32_t get_var_gateway_mac_address_byte5();
 extern void set_var_gateway_mac_address_byte5(int32_t value);
 extern int32_t get_var_gateway_mac_address_byte6();
 extern void set_var_gateway_mac_address_byte6(int32_t value);
+extern const char *get_var_current_time_zone_string();
+extern void set_var_current_time_zone_string(const char *value);
 
 
 #ifdef __cplusplus

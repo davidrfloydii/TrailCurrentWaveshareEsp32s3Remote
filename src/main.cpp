@@ -211,21 +211,37 @@ void setup()
     // Start by reading saved preferences in from NVM
     preferences.begin("user_settings", false);
     int savedTheme = preferences.getInt("selectedTheme", 0);
-    int screenTimeout = preferences.getInt("screenTimeout",0);
-    bool keepScreenOnWhileDriving = preferences.getBool("onWhileDriving",true);
-    int gatewayMac1 = preferences.getInt("gatewayMac1",00);
-    int gatewayMac2 = preferences.getInt("gatewayMac2",00);
-    int gatewayMac3 = preferences.getInt("gatewayMac3",00);
-    int gatewayMac4 = preferences.getInt("gatewayMac4",00);
-    int gatewayMac5 = preferences.getInt("gatewayMac5",00);
-    int gatewayMac6 = preferences.getInt("gatewayMac6",00);
+    int screenTimeout = preferences.getInt("screenTimeout", 0);
+    bool keepScreenOnWhileDriving = preferences.getBool("onWhileDriving", true);
+    int gatewayMac1 = preferences.getInt("gatewayMac1", 00);
+    int gatewayMac2 = preferences.getInt("gatewayMac2", 00);
+    int gatewayMac3 = preferences.getInt("gatewayMac3", 00);
+    int gatewayMac4 = preferences.getInt("gatewayMac4", 00);
+    int gatewayMac5 = preferences.getInt("gatewayMac5", 00);
+    int gatewayMac6 = preferences.getInt("gatewayMac6", 00);
+    String savedTimezone = preferences.getString("timeZone", "ASKT9AKDT,M3.2.0/2:00:00,M11.1.0/2:00:00");
     char macString[18];
     sprintf(macString, "%02X:%02X:%02X:%02X:%02X:%02X",
-          gatewayMac1, gatewayMac2, gatewayMac3, gatewayMac4, gatewayMac5, gatewayMac6);
-    lv_label_set_text(objects.label_gateway_mac_address,macString);
+            gatewayMac1, gatewayMac2, gatewayMac3, gatewayMac4, gatewayMac5, gatewayMac6);
+    lv_label_set_text(objects.label_gateway_mac_address, macString);
     set_var_selected_theme(savedTheme);
     set_var_screen_timeout_value(screenTimeout);
     set_var_keep_screen_on_while_driving(keepScreenOnWhileDriving);
+    const char *timezoneItems[41] = {"ASKT9AKDT,M3.2.0/2:00:00,M11.1.0/2:00:00", "CST6CDT,M3.2.0/2:00:00,M11.1.0/2:00:00", "MST7MDT,M3.2.0/2:00:00,M11.1.0/2:00:00", "HST11HDT,M3.2.0/2:00:00,M11.1.0/2:00:00", "PST8PDT,M3.2.0/2:00:00,M11.1.0/2:00:00", "EST5EDT,M3.2.0/2:00:00,M11.1.0/2:00:00", "MST7"};
+    int selectedTimezone = 0;
+    savedTimezone.trim();
+    const char *savedTimezoneChar = savedTimezone.c_str();
+    for (int i = 0; i < 7; i++)
+    {
+        if (strcmp(timezoneItems[i],savedTimezoneChar) == 0)
+        {
+            debugln("Found selected timezone");
+            debug("The selected timezone is - ");
+            debugln(timezoneItems[i]);
+            selectedTimezone = i;
+        }
+    }
+    lv_dropdown_set_selected(objects.drop_down_selected_time_zone, selectedTimezone);
     // Set the version number label
     lv_label_set_text(objects.label_version_number, CURRENT_VERSION);
 }
@@ -237,16 +253,17 @@ void loop()
     {
         int selectedTheme = get_var_selected_theme();
         int screenTimeout = get_var_screen_timeout_value();
-        bool keepScreenOnWhileDriving = get_var_keep_screen_on_while_driving();        
+        bool keepScreenOnWhileDriving = get_var_keep_screen_on_while_driving();
         preferences.putInt("selectedTheme", selectedTheme);
-        preferences.putInt("screenTimeout",screenTimeout);
-        preferences.putBool("onWhileDriving",keepScreenOnWhileDriving);
-        preferences.putInt("gatewayMac1",get_var_gateway_mac_address_byte1());
-        preferences.putInt("gatewayMac2",get_var_gateway_mac_address_byte2());
-        preferences.putInt("gatewayMac3",get_var_gateway_mac_address_byte3());
-        preferences.putInt("gatewayMac4",get_var_gateway_mac_address_byte4());
-        preferences.putInt("gatewayMac5",get_var_gateway_mac_address_byte5());
-        preferences.putInt("gatewayMac6",get_var_gateway_mac_address_byte6());
+        preferences.putInt("screenTimeout", screenTimeout);
+        preferences.putBool("onWhileDriving", keepScreenOnWhileDriving);
+        preferences.putInt("gatewayMac1", get_var_gateway_mac_address_byte1());
+        preferences.putInt("gatewayMac2", get_var_gateway_mac_address_byte2());
+        preferences.putInt("gatewayMac3", get_var_gateway_mac_address_byte3());
+        preferences.putInt("gatewayMac4", get_var_gateway_mac_address_byte4());
+        preferences.putInt("gatewayMac5", get_var_gateway_mac_address_byte5());
+        preferences.putInt("gatewayMac6", get_var_gateway_mac_address_byte6());
+        preferences.putString("timeZone", get_var_current_time_zone_string());
         set_var_user_settings_changed(false);
     }
     unsigned long currentStatusCheckMillis = millis();

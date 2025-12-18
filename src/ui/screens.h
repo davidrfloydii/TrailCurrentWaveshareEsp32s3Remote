@@ -180,6 +180,9 @@ typedef struct _objects_t {
     lv_obj_t *text_box_mac_address_input_fifth_byte;
     lv_obj_t *text_box_mac_address_input_sixth_byte;
     lv_obj_t *keyboard_mac_address_entry;
+    lv_obj_t *container_date_time_settings;
+    lv_obj_t *label_time_zone_header;
+    lv_obj_t *drop_down_selected_time_zone;
 } objects_t;
 
 extern objects_t objects;

@@ -13,6 +13,7 @@ void action_settings_selection_change(lv_event_t *e)
     lv_obj_add_flag(objects.container_connectivity_options, LV_OBJ_FLAG_HIDDEN); // Hide by default
     lv_obj_add_flag(objects.container_demo_settings, LV_OBJ_FLAG_HIDDEN);        // Hide by default
     lv_obj_add_flag(objects.container_about_settings, LV_OBJ_FLAG_HIDDEN);       // Hide by default
+    lv_obj_add_flag(objects.container_date_time_settings, LV_OBJ_FLAG_HIDDEN);   // Hide by default
     if (menuSelection == 0)
     {
         lv_obj_clear_flag(objects.container_display_settings, LV_OBJ_FLAG_HIDDEN);
@@ -28,6 +29,10 @@ void action_settings_selection_change(lv_event_t *e)
     else if (menuSelection == 3)
     {
         lv_obj_clear_flag(objects.container_about_settings, LV_OBJ_FLAG_HIDDEN);
+    }
+    else if (menuSelection == 4)
+    {
+        lv_obj_clear_flag(objects.container_date_time_settings, LV_OBJ_FLAG_HIDDEN);
     }
 }
 
@@ -215,4 +220,15 @@ void action_change_gateway_mac_address(lv_event_t *e)
     lv_obj_add_event_cb(objects.text_box_mac_address_input_sixth_byte, ta_event_cb, LV_EVENT_ALL, kb);
     lv_keyboard_set_textarea(kb, objects.text_box_mac_address_input_sixth_byte);
     lv_obj_add_state(objects.text_box_mac_address_input_first_byte, LV_STATE_FOCUSED);
+}
+
+/* NOTE: These have to match the order of the drop down items in the UI */
+const char *timezoneItems[41] = {"ASKT9AKDT,M3.2.0/2:00:00,M11.1.0/2:00:00", "CST6CDT,M3.2.0/2:00:00,M11.1.0/2:00:00", "MST7MDT,M3.2.0/2:00:00,M11.1.0/2:00:00", "HST11HDT,M3.2.0/2:00:00,M11.1.0/2:00:00", "PST8PDT,M3.2.0/2:00:00,M11.1.0/2:00:00", "EST5EDT,M3.2.0/2:00:00,M11.1.0/2:00:00", "MST7"};
+void action_timezone_change(lv_event_t *e)
+{
+    uint8_t selectedIdex = lv_dropdown_get_selected(objects.drop_down_selected_time_zone);
+    debugln(selectedIdex);
+    debugln(timezoneItems[selectedIdex]);
+    set_var_user_settings_changed(true);
+    set_var_current_time_zone_string(timezoneItems[selectedIdex]);
 }
