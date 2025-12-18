@@ -174,4 +174,5 @@ void action_change_gateway_mac_address(lv_event_t *e)
 
     lv_obj_add_event_cb(objects.text_box_mac_address_input, ta_event_cb, LV_EVENT_ALL, kb);
     lv_keyboard_set_textarea(kb, objects.text_box_mac_address_input);
+    lv_obj_add_state(objects.text_box_mac_address_input,LV_STATE_FOCUSED);
 }
