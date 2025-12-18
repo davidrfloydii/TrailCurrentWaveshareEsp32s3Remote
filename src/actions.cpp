@@ -173,6 +173,7 @@ void action_change_gateway_mac_address(lv_event_t *e)
     /*Create a keyboard to use it with an of the text areas*/
     lv_obj_t *kb = lv_keyboard_create(objects.container_mac_addr_entry);
     lv_obj_set_size(kb, 800, 320);
+    add_style_keyboard_default(kb);
     /*Create a text area. The keyboard will write here*/
 
     lv_obj_add_event_cb(objects.text_box_mac_address_input_first_byte, ta_event_cb, LV_EVENT_ALL, kb);
@@ -192,4 +193,5 @@ void action_change_gateway_mac_address(lv_event_t *e)
 
     lv_obj_add_event_cb(objects.text_box_mac_address_input_sixth_byte, ta_event_cb, LV_EVENT_ALL, kb);
     lv_keyboard_set_textarea(kb, objects.text_box_mac_address_input_sixth_byte);
+    lv_obj_add_state(objects.text_box_mac_address_input_first_byte, LV_STATE_FOCUSED);
 }

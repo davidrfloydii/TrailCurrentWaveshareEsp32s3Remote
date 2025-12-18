@@ -485,6 +485,7 @@ void remove_style_dropdown_default(lv_obj_t *obj) {
 
 void init_style_keyboard_default_MAIN_DEFAULT(lv_style_t *style) {
     lv_style_set_bg_color(style, lv_color_hex(theme_colors[active_theme_index][4]));
+    lv_style_set_text_font(style, &lv_font_montserrat_32);
 };
 
 lv_style_t *get_style_keyboard_default_MAIN_DEFAULT() {

@@ -14,6 +14,7 @@ typedef struct _objects_t {
     lv_obj_t *solar;
     lv_obj_t *air;
     lv_obj_t *settings;
+    lv_obj_t *temp;
     lv_obj_t *home_page_bottom_nav_bar;
     lv_obj_t *home_page_bottom_nav_bar__bottom_nav_bar_button_home;
     lv_obj_t *home_page_bottom_nav_bar__bottom_nav_bar_button_trailer;
@@ -178,6 +179,7 @@ typedef struct _objects_t {
     lv_obj_t *text_box_mac_address_input_fourth_byte;
     lv_obj_t *text_box_mac_address_input_fifth_byte;
     lv_obj_t *text_box_mac_address_input_sixth_byte;
+    lv_obj_t *keyboard_mac_address_entry;
 } objects_t;
 
 extern objects_t objects;
@@ -189,6 +191,7 @@ enum ScreensEnum {
     SCREEN_ID_SOLAR = 4,
     SCREEN_ID_AIR = 5,
     SCREEN_ID_SETTINGS = 6,
+    SCREEN_ID_TEMP = 7,
 };
 
 void create_screen_home();
@@ -208,6 +211,9 @@ void tick_screen_air();
 
 void create_screen_settings();
 void tick_screen_settings();
+
+void create_screen_temp();
+void tick_screen_temp();
 
 void create_user_widget_bottom_nav_bar(lv_obj_t *parent_obj, int startWidgetIndex);
 void tick_user_widget_bottom_nav_bar(int startWidgetIndex);

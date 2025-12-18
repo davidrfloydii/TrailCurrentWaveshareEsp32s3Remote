@@ -1,10 +1,10 @@
 {
   "navigation": {
-    "selectedUserPageObject": "[TrailCurrentWaveshareEsp32s3Remote.eez-project]:/userPages/1",
+    "selectedUserPageObject": "[TrailCurrentWaveshareEsp32s3Remote.eez-project]:/userPages/5",
     "selectedUserWidgetObject": "[TrailCurrentWaveshareEsp32s3Remote.eez-project]:/userWidgets/0",
-    "selectedActionObject": "[TrailCurrentWaveshareEsp32s3Remote.eez-project]:/actions/1",
-    "selectedGlobalVariableObject": "[TrailCurrentWaveshareEsp32s3Remote.eez-project]:/variables/globalVariables/28",
-    "selectedStyleObject": "[TrailCurrentWaveshareEsp32s3Remote.eez-project]:/lvglStyles/styles/3",
+    "selectedActionObject": "[TrailCurrentWaveshareEsp32s3Remote.eez-project]:/actions/-1",
+    "selectedGlobalVariableObject": "[TrailCurrentWaveshareEsp32s3Remote.eez-project]:/variables/globalVariables/30",
+    "selectedStyleObject": "[TrailCurrentWaveshareEsp32s3Remote.eez-project]:/lvglStyles/styles/9",
     "selectedThemeObject": "[TrailCurrentWaveshareEsp32s3Remote.eez-project]:/themes/0",
     "selectedThemeColorObject": "[TrailCurrentWaveshareEsp32s3Remote.eez-project]:/colors/11",
     "selectedFontObject": "[TrailCurrentWaveshareEsp32s3Remote.eez-project]:/fonts/1",
@@ -30,7 +30,7 @@
           },
           {
             "type": "border",
-            "selected": 3,
+            "selected": 0,
             "size": 240,
             "location": "right",
             "children": [
@@ -197,8 +197,8 @@
             {
               "type": "tabset",
               "id": "EDITORS",
-              "weight": 49.657990884125944,
-              "selected": 2,
+              "weight": 44.78918218167261,
+              "selected": 3,
               "enableDeleteWhenEmpty": false,
               "enableClose": false,
               "children": [
@@ -227,10 +227,10 @@
                 {
                   "type": "tab",
                   "id": "#6d849955-1b45-44f9-8dc0-8e6a53e9d60d",
-                  "name": "Trailer",
+                  "name": "Temp",
                   "component": "editor",
                   "config": {
-                    "objectPath": "[TrailCurrentWaveshareEsp32s3Remote.eez-project]:/userPages/1",
+                    "objectPath": "[TrailCurrentWaveshareEsp32s3Remote.eez-project]:/userPages/6",
                     "permanent": false
                   },
                   "icon": "svg:page"
@@ -246,13 +246,12 @@
                   },
                   "icon": "svg:page"
                 }
-              ],
-              "active": true
+              ]
             },
             {
               "type": "row",
               "id": "#32fab2d9-179b-4fde-a96b-abcfc1296ac2",
-              "weight": 20.51659097054677,
+              "weight": 25.38539967300011,
               "children": [
                 {
                   "type": "tabset",
@@ -267,7 +266,8 @@
                       "enableClose": false,
                       "icon": "svg:properties"
                     }
-                  ]
+                  ],
+                  "active": true
                 },
                 {
                   "type": "tabset",
@@ -863,8 +863,7 @@
                       "component": "themes",
                       "enableClose": false
                     }
-                  ],
-                  "active": true
+                  ]
                 },
                 {
                   "type": "tabset",
@@ -880,7 +879,8 @@
                       "component": "colors",
                       "enableClose": false
                     }
-                  ]
+                  ],
+                  "active": true
                 }
               ]
             }
@@ -1053,22 +1053,16 @@
     "[TrailCurrentWaveshareEsp32s3Remote.eez-project]:/lvglStyles/styles[tree-state]": {
       "0": {},
       "1": {},
-      "3": {
-        "$selected": true
-      },
+      "3": {},
       "6": {},
       "8": {},
-      "9": {},
+      "9": {
+        "$selected": true
+      },
       "10": {},
-      "12": {
-        "$selected": true
-      },
-      "13": {
-        "$selected": true
-      },
-      "16": {
-        "$selected": true
-      },
+      "12": {},
+      "13": {},
+      "16": {},
       "20": {},
       "22": {},
       "27": {},
@@ -1197,22 +1191,17 @@
       "selection": {
         "0": {
           "0": {},
-          "1": {
-            "0": {},
-            "1": {},
-            "2": {},
+          "1": {},
+          "6": {
+            "5": {},
             "$selected": true
-          },
-          "4": {
-            "1": {},
-            "2": {}
           }
         }
       },
       "transform": {
         "translate": {
-          "x": -243.99827700638028,
-          "y": -212.75462306333745
+          "x": -288.78483950638025,
+          "y": -91.75462306333748
         },
         "scale": 0.75
       },
@@ -1249,6 +1238,28 @@
         "secondToPx": 200,
         "scrollLeft": 0
       }
+    },
+    "[TrailCurrentWaveshareEsp32s3Remote.eez-project]:/userPages/6[flow-state]": {
+      "selection": {
+        "0": {
+          "0": {
+            "$selected": true
+          }
+        }
+      },
+      "transform": {
+        "translate": {
+          "x": -282,
+          "y": -266
+        },
+        "scale": 0.75
+      },
+      "timeline": {
+        "isEditorActive": false,
+        "position": 0,
+        "secondToPx": 200,
+        "scrollLeft": 0
+      }
     }
   },
   "activeOutputSection": 0,
@@ -1268,7 +1279,8 @@
     "POSITION AND SIZE",
     "MISCELLANEOUS",
     "TEXT",
-    "PADDING"
+    "PADDING",
+    "BACKGROUND"
   ],
   "showInactiveFlowsInDebugger": true,
   "globalFlowZoom": true,
