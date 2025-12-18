@@ -2122,12 +2122,67 @@ void create_screen_settings() {
             {
                 lv_obj_t *parent_obj = obj;
                 {
-                    // TextBoxMacAddressInput
+                    // TextBoxMacAddressInputFirstByte
                     lv_obj_t *obj = lv_textarea_create(parent_obj);
-                    objects.text_box_mac_address_input = obj;
-                    lv_obj_set_pos(obj, 0, 0);
-                    lv_obj_set_size(obj, LV_PCT(100), 70);
-                    lv_textarea_set_max_length(obj, 128);
+                    objects.text_box_mac_address_input_first_byte = obj;
+                    lv_obj_set_pos(obj, 5, 5);
+                    lv_obj_set_size(obj, LV_PCT(10), 70);
+                    lv_textarea_set_max_length(obj, 2);
+                    lv_textarea_set_one_line(obj, false);
+                    lv_textarea_set_password_mode(obj, false);
+                    lv_obj_set_style_text_font(obj, &lv_font_montserrat_24, LV_PART_MAIN | LV_STATE_DEFAULT);
+                }
+                {
+                    // TextBoxMacAddressInputSecondByte
+                    lv_obj_t *obj = lv_textarea_create(parent_obj);
+                    objects.text_box_mac_address_input_second_byte = obj;
+                    lv_obj_set_pos(obj, 90, 5);
+                    lv_obj_set_size(obj, LV_PCT(10), 70);
+                    lv_textarea_set_max_length(obj, 2);
+                    lv_textarea_set_one_line(obj, false);
+                    lv_textarea_set_password_mode(obj, false);
+                    lv_obj_set_style_text_font(obj, &lv_font_montserrat_24, LV_PART_MAIN | LV_STATE_DEFAULT);
+                }
+                {
+                    // TextBoxMacAddressInputThirdByte
+                    lv_obj_t *obj = lv_textarea_create(parent_obj);
+                    objects.text_box_mac_address_input_third_byte = obj;
+                    lv_obj_set_pos(obj, 175, 5);
+                    lv_obj_set_size(obj, LV_PCT(10), 70);
+                    lv_textarea_set_max_length(obj, 2);
+                    lv_textarea_set_one_line(obj, false);
+                    lv_textarea_set_password_mode(obj, false);
+                    lv_obj_set_style_text_font(obj, &lv_font_montserrat_24, LV_PART_MAIN | LV_STATE_DEFAULT);
+                }
+                {
+                    // TextBoxMacAddressInputFourthByte
+                    lv_obj_t *obj = lv_textarea_create(parent_obj);
+                    objects.text_box_mac_address_input_fourth_byte = obj;
+                    lv_obj_set_pos(obj, 260, 5);
+                    lv_obj_set_size(obj, LV_PCT(10), 70);
+                    lv_textarea_set_max_length(obj, 2);
+                    lv_textarea_set_one_line(obj, false);
+                    lv_textarea_set_password_mode(obj, false);
+                    lv_obj_set_style_text_font(obj, &lv_font_montserrat_24, LV_PART_MAIN | LV_STATE_DEFAULT);
+                }
+                {
+                    // TextBoxMacAddressInputFifthByte
+                    lv_obj_t *obj = lv_textarea_create(parent_obj);
+                    objects.text_box_mac_address_input_fifth_byte = obj;
+                    lv_obj_set_pos(obj, 345, 5);
+                    lv_obj_set_size(obj, LV_PCT(10), 70);
+                    lv_textarea_set_max_length(obj, 2);
+                    lv_textarea_set_one_line(obj, false);
+                    lv_textarea_set_password_mode(obj, false);
+                    lv_obj_set_style_text_font(obj, &lv_font_montserrat_24, LV_PART_MAIN | LV_STATE_DEFAULT);
+                }
+                {
+                    // TextBoxMacAddressInputSixthByte
+                    lv_obj_t *obj = lv_textarea_create(parent_obj);
+                    objects.text_box_mac_address_input_sixth_byte = obj;
+                    lv_obj_set_pos(obj, 430, 5);
+                    lv_obj_set_size(obj, LV_PCT(10), 70);
+                    lv_textarea_set_max_length(obj, 2);
                     lv_textarea_set_one_line(obj, false);
                     lv_textarea_set_password_mode(obj, false);
                     lv_obj_set_style_text_font(obj, &lv_font_montserrat_24, LV_PART_MAIN | LV_STATE_DEFAULT);

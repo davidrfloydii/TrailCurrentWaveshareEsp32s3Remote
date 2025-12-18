@@ -172,7 +172,12 @@ typedef struct _objects_t {
     lv_obj_t *label_version_number;
     lv_obj_t *mcu_mac_address_value;
     lv_obj_t *container_mac_addr_entry;
-    lv_obj_t *text_box_mac_address_input;
+    lv_obj_t *text_box_mac_address_input_first_byte;
+    lv_obj_t *text_box_mac_address_input_second_byte;
+    lv_obj_t *text_box_mac_address_input_third_byte;
+    lv_obj_t *text_box_mac_address_input_fourth_byte;
+    lv_obj_t *text_box_mac_address_input_fifth_byte;
+    lv_obj_t *text_box_mac_address_input_sixth_byte;
 } objects_t;
 
 extern objects_t objects;

@@ -9328,9 +9328,9 @@
                 {
                   "objID": "4692c7fc-1cf7-472e-aa5d-f10110118e83",
                   "type": "LVGLTextareaWidget",
-                  "left": 0,
-                  "top": 0,
-                  "width": 100,
+                  "left": 5,
+                  "top": 5,
+                  "width": 10,
                   "height": 70,
                   "customInputs": [],
                   "customOutputs": [],
@@ -9342,7 +9342,7 @@
                   },
                   "timeline": [],
                   "eventHandlers": [],
-                  "identifier": "TextBoxMacAddressInput",
+                  "identifier": "TextBoxMacAddressInputFirstByte",
                   "leftUnit": "px",
                   "topUnit": "px",
                   "widthUnit": "%",
@@ -9377,7 +9377,277 @@
                   "oneLineMode": false,
                   "passwordMode": false,
                   "acceptedCharacters": "",
-                  "maxTextLength": 128
+                  "maxTextLength": 2
+                },
+                {
+                  "objID": "fab6f91f-4a36-4450-d0fa-2bb3a665239c",
+                  "type": "LVGLTextareaWidget",
+                  "left": 90,
+                  "top": 5,
+                  "width": 10,
+                  "height": 70,
+                  "customInputs": [],
+                  "customOutputs": [],
+                  "style": {
+                    "objID": "641b658f-ad19-454f-c228-844233c35514",
+                    "useStyle": "default",
+                    "conditionalStyles": [],
+                    "childStyles": []
+                  },
+                  "timeline": [],
+                  "eventHandlers": [],
+                  "identifier": "TextBoxMacAddressInputSecondByte",
+                  "leftUnit": "px",
+                  "topUnit": "px",
+                  "widthUnit": "%",
+                  "heightUnit": "px",
+                  "children": [],
+                  "widgetFlags": "CLICK_FOCUSABLE|GESTURE_BUBBLE|PRESS_LOCK|SCROLLABLE|SCROLL_CHAIN_HOR|SCROLL_CHAIN_VER|SCROLL_ELASTIC|SCROLL_MOMENTUM|SCROLL_ON_FOCUS|SCROLL_WITH_ARROW|SNAPPABLE",
+                  "hiddenFlagType": "literal",
+                  "clickableFlag": true,
+                  "clickableFlagType": "literal",
+                  "flagScrollbarMode": "",
+                  "flagScrollDirection": "",
+                  "scrollSnapX": "",
+                  "scrollSnapY": "",
+                  "checkedStateType": "literal",
+                  "disabledStateType": "literal",
+                  "states": "",
+                  "localStyles": {
+                    "objID": "15448b96-f96b-4f4d-fa7a-5b4a3e6d3480",
+                    "definition": {
+                      "MAIN": {
+                        "DEFAULT": {
+                          "text_font": "MONTSERRAT_24"
+                        }
+                      }
+                    }
+                  },
+                  "group": "",
+                  "groupIndex": 0,
+                  "text": "",
+                  "textType": "literal",
+                  "placeholder": "",
+                  "oneLineMode": false,
+                  "passwordMode": false,
+                  "acceptedCharacters": "",
+                  "maxTextLength": 2
+                },
+                {
+                  "objID": "bb962d4e-a779-4175-cfd9-763f61fb3b90",
+                  "type": "LVGLTextareaWidget",
+                  "left": 175,
+                  "top": 5,
+                  "width": 10,
+                  "height": 70,
+                  "customInputs": [],
+                  "customOutputs": [],
+                  "style": {
+                    "objID": "4803d880-118a-40f4-b4e5-c38ffc239939",
+                    "useStyle": "default",
+                    "conditionalStyles": [],
+                    "childStyles": []
+                  },
+                  "timeline": [],
+                  "eventHandlers": [],
+                  "identifier": "TextBoxMacAddressInputThirdByte",
+                  "leftUnit": "px",
+                  "topUnit": "px",
+                  "widthUnit": "%",
+                  "heightUnit": "px",
+                  "children": [],
+                  "widgetFlags": "CLICK_FOCUSABLE|GESTURE_BUBBLE|PRESS_LOCK|SCROLLABLE|SCROLL_CHAIN_HOR|SCROLL_CHAIN_VER|SCROLL_ELASTIC|SCROLL_MOMENTUM|SCROLL_ON_FOCUS|SCROLL_WITH_ARROW|SNAPPABLE",
+                  "hiddenFlagType": "literal",
+                  "clickableFlag": true,
+                  "clickableFlagType": "literal",
+                  "flagScrollbarMode": "",
+                  "flagScrollDirection": "",
+                  "scrollSnapX": "",
+                  "scrollSnapY": "",
+                  "checkedStateType": "literal",
+                  "disabledStateType": "literal",
+                  "states": "",
+                  "localStyles": {
+                    "objID": "05e49c4c-aeee-4302-8317-8b2e670cc805",
+                    "definition": {
+                      "MAIN": {
+                        "DEFAULT": {
+                          "text_font": "MONTSERRAT_24"
+                        }
+                      }
+                    }
+                  },
+                  "group": "",
+                  "groupIndex": 0,
+                  "text": "",
+                  "textType": "literal",
+                  "placeholder": "",
+                  "oneLineMode": false,
+                  "passwordMode": false,
+                  "acceptedCharacters": "",
+                  "maxTextLength": 2
+                },
+                {
+                  "objID": "8b80b2fb-db96-4abb-e24a-4ff4ce8a176b",
+                  "type": "LVGLTextareaWidget",
+                  "left": 260,
+                  "top": 5,
+                  "width": 10,
+                  "height": 70,
+                  "customInputs": [],
+                  "customOutputs": [],
+                  "style": {
+                    "objID": "886355b7-694c-432d-ab63-1c60b2beca36",
+                    "useStyle": "default",
+                    "conditionalStyles": [],
+                    "childStyles": []
+                  },
+                  "timeline": [],
+                  "eventHandlers": [],
+                  "identifier": "TextBoxMacAddressInputFourthByte",
+                  "leftUnit": "px",
+                  "topUnit": "px",
+                  "widthUnit": "%",
+                  "heightUnit": "px",
+                  "children": [],
+                  "widgetFlags": "CLICK_FOCUSABLE|GESTURE_BUBBLE|PRESS_LOCK|SCROLLABLE|SCROLL_CHAIN_HOR|SCROLL_CHAIN_VER|SCROLL_ELASTIC|SCROLL_MOMENTUM|SCROLL_ON_FOCUS|SCROLL_WITH_ARROW|SNAPPABLE",
+                  "hiddenFlagType": "literal",
+                  "clickableFlag": true,
+                  "clickableFlagType": "literal",
+                  "flagScrollbarMode": "",
+                  "flagScrollDirection": "",
+                  "scrollSnapX": "",
+                  "scrollSnapY": "",
+                  "checkedStateType": "literal",
+                  "disabledStateType": "literal",
+                  "states": "",
+                  "localStyles": {
+                    "objID": "b24c9cc4-6754-4981-b1f3-74495cd8ce16",
+                    "definition": {
+                      "MAIN": {
+                        "DEFAULT": {
+                          "text_font": "MONTSERRAT_24"
+                        }
+                      }
+                    }
+                  },
+                  "group": "",
+                  "groupIndex": 0,
+                  "text": "",
+                  "textType": "literal",
+                  "placeholder": "",
+                  "oneLineMode": false,
+                  "passwordMode": false,
+                  "acceptedCharacters": "",
+                  "maxTextLength": 2
+                },
+                {
+                  "objID": "516aa27f-e6d8-4c0a-d566-da8c78365405",
+                  "type": "LVGLTextareaWidget",
+                  "left": 345,
+                  "top": 5,
+                  "width": 10,
+                  "height": 70,
+                  "customInputs": [],
+                  "customOutputs": [],
+                  "style": {
+                    "objID": "16d39e80-e040-4671-c209-4d3421f8d6dd",
+                    "useStyle": "default",
+                    "conditionalStyles": [],
+                    "childStyles": []
+                  },
+                  "timeline": [],
+                  "eventHandlers": [],
+                  "identifier": "TextBoxMacAddressInputFifthByte",
+                  "leftUnit": "px",
+                  "topUnit": "px",
+                  "widthUnit": "%",
+                  "heightUnit": "px",
+                  "children": [],
+                  "widgetFlags": "CLICK_FOCUSABLE|GESTURE_BUBBLE|PRESS_LOCK|SCROLLABLE|SCROLL_CHAIN_HOR|SCROLL_CHAIN_VER|SCROLL_ELASTIC|SCROLL_MOMENTUM|SCROLL_ON_FOCUS|SCROLL_WITH_ARROW|SNAPPABLE",
+                  "hiddenFlagType": "literal",
+                  "clickableFlag": true,
+                  "clickableFlagType": "literal",
+                  "flagScrollbarMode": "",
+                  "flagScrollDirection": "",
+                  "scrollSnapX": "",
+                  "scrollSnapY": "",
+                  "checkedStateType": "literal",
+                  "disabledStateType": "literal",
+                  "states": "",
+                  "localStyles": {
+                    "objID": "09b642a2-d26b-49a1-fe86-49dd63b3bd82",
+                    "definition": {
+                      "MAIN": {
+                        "DEFAULT": {
+                          "text_font": "MONTSERRAT_24"
+                        }
+                      }
+                    }
+                  },
+                  "group": "",
+                  "groupIndex": 0,
+                  "text": "",
+                  "textType": "literal",
+                  "placeholder": "",
+                  "oneLineMode": false,
+                  "passwordMode": false,
+                  "acceptedCharacters": "",
+                  "maxTextLength": 2
+                },
+                {
+                  "objID": "af7688d8-cd3a-4af6-906e-17cec42aa1c8",
+                  "type": "LVGLTextareaWidget",
+                  "left": 430,
+                  "top": 5,
+                  "width": 10,
+                  "height": 70,
+                  "customInputs": [],
+                  "customOutputs": [],
+                  "style": {
+                    "objID": "d2f6fe14-4e02-4337-f2d9-6be20b6243ca",
+                    "useStyle": "default",
+                    "conditionalStyles": [],
+                    "childStyles": []
+                  },
+                  "timeline": [],
+                  "eventHandlers": [],
+                  "identifier": "TextBoxMacAddressInputSixthByte",
+                  "leftUnit": "px",
+                  "topUnit": "px",
+                  "widthUnit": "%",
+                  "heightUnit": "px",
+                  "children": [],
+                  "widgetFlags": "CLICK_FOCUSABLE|GESTURE_BUBBLE|PRESS_LOCK|SCROLLABLE|SCROLL_CHAIN_HOR|SCROLL_CHAIN_VER|SCROLL_ELASTIC|SCROLL_MOMENTUM|SCROLL_ON_FOCUS|SCROLL_WITH_ARROW|SNAPPABLE",
+                  "hiddenFlagType": "literal",
+                  "clickableFlag": true,
+                  "clickableFlagType": "literal",
+                  "flagScrollbarMode": "",
+                  "flagScrollDirection": "",
+                  "scrollSnapX": "",
+                  "scrollSnapY": "",
+                  "checkedStateType": "literal",
+                  "disabledStateType": "literal",
+                  "states": "",
+                  "localStyles": {
+                    "objID": "6c3ebd83-fb74-42ef-a44f-38237a45170f",
+                    "definition": {
+                      "MAIN": {
+                        "DEFAULT": {
+                          "text_font": "MONTSERRAT_24"
+                        }
+                      }
+                    }
+                  },
+                  "group": "",
+                  "groupIndex": 0,
+                  "text": "",
+                  "textType": "literal",
+                  "placeholder": "",
+                  "oneLineMode": false,
+                  "passwordMode": false,
+                  "acceptedCharacters": "",
+                  "maxTextLength": 2
                 }
               ],
               "widgetFlags": "",
