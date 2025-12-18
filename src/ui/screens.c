@@ -1727,7 +1727,7 @@ void create_screen_settings() {
                             lv_obj_set_size(obj, LV_PCT(100), LV_SIZE_CONTENT);
                             add_style_label_list_menu_item(obj);
                             lv_obj_set_style_align(obj, LV_ALIGN_LEFT_MID, LV_PART_MAIN | LV_STATE_DEFAULT);
-                            lv_label_set_text(obj, "About");
+                            lv_label_set_text(obj, "Connectivity");
                         }
                     }
                 }
@@ -1745,6 +1745,24 @@ void create_screen_settings() {
                             lv_obj_set_size(obj, LV_PCT(100), LV_SIZE_CONTENT);
                             add_style_label_list_menu_item(obj);
                             lv_label_set_text(obj, "Demo");
+                        }
+                    }
+                }
+                {
+                    lv_obj_t *obj = lv_btn_create(parent_obj);
+                    lv_obj_set_pos(obj, 0, 5);
+                    lv_obj_set_size(obj, LV_PCT(100), 40);
+                    lv_obj_add_event_cb(obj, action_settings_selection_change, LV_EVENT_PRESSED, (void *)3);
+                    add_style_button_list_menu_item(obj);
+                    {
+                        lv_obj_t *parent_obj = obj;
+                        {
+                            lv_obj_t *obj = lv_label_create(parent_obj);
+                            lv_obj_set_pos(obj, 0, 0);
+                            lv_obj_set_size(obj, LV_PCT(100), LV_SIZE_CONTENT);
+                            add_style_label_list_menu_item(obj);
+                            lv_obj_set_style_align(obj, LV_ALIGN_LEFT_MID, LV_PART_MAIN | LV_STATE_DEFAULT);
+                            lv_label_set_text(obj, "About");
                         }
                     }
                 }
@@ -1912,57 +1930,57 @@ void create_screen_settings() {
             }
         }
         {
-            // ContainerAboutSettings
+            // ContainerConnectivityOptions
             lv_obj_t *obj = lv_obj_create(parent_obj);
-            objects.container_about_settings = obj;
+            objects.container_connectivity_options = obj;
             lv_obj_set_pos(obj, 160, 0);
             lv_obj_set_size(obj, 640, 420);
+            lv_obj_set_style_pad_left(obj, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
+            lv_obj_set_style_pad_top(obj, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
+            lv_obj_set_style_pad_right(obj, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
+            lv_obj_set_style_pad_bottom(obj, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
             lv_obj_set_style_bg_opa(obj, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
             lv_obj_set_style_border_width(obj, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
             lv_obj_set_style_radius(obj, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
             lv_obj_add_flag(obj, LV_OBJ_FLAG_HIDDEN);
             lv_obj_clear_flag(obj, LV_OBJ_FLAG_CLICKABLE|LV_OBJ_FLAG_CLICK_FOCUSABLE|LV_OBJ_FLAG_GESTURE_BUBBLE|LV_OBJ_FLAG_PRESS_LOCK|LV_OBJ_FLAG_SCROLLABLE|LV_OBJ_FLAG_SCROLL_CHAIN_HOR|LV_OBJ_FLAG_SCROLL_CHAIN_VER|LV_OBJ_FLAG_SCROLL_ELASTIC|LV_OBJ_FLAG_SCROLL_MOMENTUM|LV_OBJ_FLAG_SCROLL_WITH_ARROW|LV_OBJ_FLAG_SNAPPABLE);
-            lv_obj_set_style_pad_top(obj, 10, LV_PART_MAIN | LV_STATE_DEFAULT);
-            lv_obj_set_style_pad_bottom(obj, 10, LV_PART_MAIN | LV_STATE_DEFAULT);
-            lv_obj_set_style_pad_left(obj, 10, LV_PART_MAIN | LV_STATE_DEFAULT);
-            lv_obj_set_style_pad_right(obj, 10, LV_PART_MAIN | LV_STATE_DEFAULT);
             {
                 lv_obj_t *parent_obj = obj;
                 {
-                    // LabelAboutHeader
                     lv_obj_t *obj = lv_label_create(parent_obj);
-                    objects.label_about_header = obj;
-                    lv_obj_set_pos(obj, 0, 0);
+                    lv_obj_set_pos(obj, 20, 12);
                     lv_obj_set_size(obj, LV_SIZE_CONTENT, LV_SIZE_CONTENT);
                     add_style_label_default(obj);
-                    lv_obj_set_style_align(obj, LV_ALIGN_TOP_LEFT, LV_PART_MAIN | LV_STATE_CHECKED);
-                    lv_label_set_text(obj, "Current Version");
+                    lv_label_set_text(obj, "Gateway MAC Address");
                 }
                 {
-                    // LabelVersionNumber
+                    // LabelGatewayMacAddress
                     lv_obj_t *obj = lv_label_create(parent_obj);
-                    objects.label_version_number = obj;
-                    lv_obj_set_pos(obj, 0, 40);
+                    objects.label_gateway_mac_address = obj;
+                    lv_obj_set_pos(obj, 20, 54);
                     lv_obj_set_size(obj, LV_SIZE_CONTENT, LV_SIZE_CONTENT);
                     add_style_label_default(obj);
-                    lv_label_set_text(obj, "0.0.0");
-                }
-                {
-                    lv_obj_t *obj = lv_label_create(parent_obj);
-                    lv_obj_set_pos(obj, 0, 85);
-                    lv_obj_set_size(obj, LV_SIZE_CONTENT, LV_SIZE_CONTENT);
-                    add_style_label_default(obj);
-                    lv_label_set_text(obj, "Mac Address");
-                }
-                {
-                    // McuMacAddressValue
-                    lv_obj_t *obj = lv_label_create(parent_obj);
-                    objects.mcu_mac_address_value = obj;
-                    lv_obj_set_pos(obj, 0, 120);
-                    lv_obj_set_size(obj, LV_SIZE_CONTENT, LV_SIZE_CONTENT);
-                    add_style_label_default(obj);
-                    lv_obj_set_style_text_align(obj, LV_TEXT_ALIGN_LEFT, LV_PART_MAIN | LV_STATE_DEFAULT);
                     lv_label_set_text(obj, "00:00:00:00:00:00");
+                }
+                {
+                    // BtnChangeGatewayMacAddress
+                    lv_obj_t *obj = lv_btn_create(parent_obj);
+                    objects.btn_change_gateway_mac_address = obj;
+                    lv_obj_set_pos(obj, 292, 42);
+                    lv_obj_set_size(obj, 70, 50);
+                    lv_obj_add_event_cb(obj, action_change_gateway_mac_address, LV_EVENT_PRESSED, (void *)0);
+                    add_style_style_button_default(obj);
+                    {
+                        lv_obj_t *parent_obj = obj;
+                        {
+                            lv_obj_t *obj = lv_label_create(parent_obj);
+                            lv_obj_set_pos(obj, 0, 0);
+                            lv_obj_set_size(obj, LV_SIZE_CONTENT, LV_SIZE_CONTENT);
+                            add_style_label_fa32_icon(obj);
+                            lv_obj_set_style_align(obj, LV_ALIGN_CENTER, LV_PART_MAIN | LV_STATE_DEFAULT);
+                            lv_label_set_text(obj, "\uf303");
+                        }
+                    }
                 }
             }
         }
@@ -2027,6 +2045,92 @@ void create_screen_settings() {
                             lv_label_set_text(obj, "Exterior");
                         }
                     }
+                }
+            }
+        }
+        {
+            // ContainerAboutSettings
+            lv_obj_t *obj = lv_obj_create(parent_obj);
+            objects.container_about_settings = obj;
+            lv_obj_set_pos(obj, 160, 0);
+            lv_obj_set_size(obj, 640, 420);
+            lv_obj_set_style_bg_opa(obj, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
+            lv_obj_set_style_border_width(obj, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
+            lv_obj_set_style_radius(obj, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
+            lv_obj_add_flag(obj, LV_OBJ_FLAG_HIDDEN);
+            lv_obj_clear_flag(obj, LV_OBJ_FLAG_CLICKABLE|LV_OBJ_FLAG_CLICK_FOCUSABLE|LV_OBJ_FLAG_GESTURE_BUBBLE|LV_OBJ_FLAG_PRESS_LOCK|LV_OBJ_FLAG_SCROLLABLE|LV_OBJ_FLAG_SCROLL_CHAIN_HOR|LV_OBJ_FLAG_SCROLL_CHAIN_VER|LV_OBJ_FLAG_SCROLL_ELASTIC|LV_OBJ_FLAG_SCROLL_MOMENTUM|LV_OBJ_FLAG_SCROLL_WITH_ARROW|LV_OBJ_FLAG_SNAPPABLE);
+            lv_obj_set_style_pad_top(obj, 10, LV_PART_MAIN | LV_STATE_DEFAULT);
+            lv_obj_set_style_pad_bottom(obj, 10, LV_PART_MAIN | LV_STATE_DEFAULT);
+            lv_obj_set_style_pad_left(obj, 10, LV_PART_MAIN | LV_STATE_DEFAULT);
+            lv_obj_set_style_pad_right(obj, 10, LV_PART_MAIN | LV_STATE_DEFAULT);
+            {
+                lv_obj_t *parent_obj = obj;
+                {
+                    // LabelAboutHeader
+                    lv_obj_t *obj = lv_label_create(parent_obj);
+                    objects.label_about_header = obj;
+                    lv_obj_set_pos(obj, 0, 0);
+                    lv_obj_set_size(obj, LV_SIZE_CONTENT, LV_SIZE_CONTENT);
+                    add_style_label_default(obj);
+                    lv_obj_set_style_align(obj, LV_ALIGN_TOP_LEFT, LV_PART_MAIN | LV_STATE_CHECKED);
+                    lv_label_set_text(obj, "Current Version");
+                }
+                {
+                    // LabelVersionNumber
+                    lv_obj_t *obj = lv_label_create(parent_obj);
+                    objects.label_version_number = obj;
+                    lv_obj_set_pos(obj, 0, 40);
+                    lv_obj_set_size(obj, LV_SIZE_CONTENT, LV_SIZE_CONTENT);
+                    add_style_label_default(obj);
+                    lv_label_set_text(obj, "0.0.0");
+                }
+                {
+                    lv_obj_t *obj = lv_label_create(parent_obj);
+                    lv_obj_set_pos(obj, 0, 85);
+                    lv_obj_set_size(obj, LV_SIZE_CONTENT, LV_SIZE_CONTENT);
+                    add_style_label_default(obj);
+                    lv_label_set_text(obj, "Mac Address");
+                }
+                {
+                    // McuMacAddressValue
+                    lv_obj_t *obj = lv_label_create(parent_obj);
+                    objects.mcu_mac_address_value = obj;
+                    lv_obj_set_pos(obj, 0, 120);
+                    lv_obj_set_size(obj, LV_SIZE_CONTENT, LV_SIZE_CONTENT);
+                    add_style_label_default(obj);
+                    lv_obj_set_style_text_align(obj, LV_TEXT_ALIGN_LEFT, LV_PART_MAIN | LV_STATE_DEFAULT);
+                    lv_label_set_text(obj, "00:00:00:00:00:00");
+                }
+            }
+        }
+        {
+            // ContainerMacAddrEntry
+            lv_obj_t *obj = lv_obj_create(parent_obj);
+            objects.container_mac_addr_entry = obj;
+            lv_obj_set_pos(obj, 0, 0);
+            lv_obj_set_size(obj, LV_PCT(100), 420);
+            lv_obj_set_style_pad_left(obj, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
+            lv_obj_set_style_pad_top(obj, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
+            lv_obj_set_style_pad_right(obj, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
+            lv_obj_set_style_pad_bottom(obj, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
+            lv_obj_set_style_border_width(obj, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
+            lv_obj_set_style_radius(obj, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
+            lv_obj_add_flag(obj, LV_OBJ_FLAG_HIDDEN);
+            lv_obj_clear_flag(obj, LV_OBJ_FLAG_CLICKABLE|LV_OBJ_FLAG_CLICK_FOCUSABLE|LV_OBJ_FLAG_GESTURE_BUBBLE|LV_OBJ_FLAG_PRESS_LOCK|LV_OBJ_FLAG_SCROLLABLE|LV_OBJ_FLAG_SCROLL_CHAIN_HOR|LV_OBJ_FLAG_SCROLL_CHAIN_VER|LV_OBJ_FLAG_SCROLL_ELASTIC|LV_OBJ_FLAG_SCROLL_MOMENTUM|LV_OBJ_FLAG_SCROLL_WITH_ARROW|LV_OBJ_FLAG_SNAPPABLE);
+            lv_obj_set_style_bg_color(obj, lv_color_hex(theme_colors[active_theme_index][1]), LV_PART_MAIN | LV_STATE_DEFAULT);
+            lv_obj_set_style_bg_opa(obj, 200, LV_PART_MAIN | LV_STATE_DEFAULT);
+            {
+                lv_obj_t *parent_obj = obj;
+                {
+                    // TextBoxMacAddressInput
+                    lv_obj_t *obj = lv_textarea_create(parent_obj);
+                    objects.text_box_mac_address_input = obj;
+                    lv_obj_set_pos(obj, 0, 0);
+                    lv_obj_set_size(obj, LV_PCT(100), 70);
+                    lv_textarea_set_max_length(obj, 128);
+                    lv_textarea_set_one_line(obj, false);
+                    lv_textarea_set_password_mode(obj, false);
+                    lv_obj_set_style_text_font(obj, &lv_font_montserrat_24, LV_PART_MAIN | LV_STATE_DEFAULT);
                 }
             }
         }
@@ -2485,6 +2589,8 @@ void change_color_theme(uint32_t theme_index) {
     lv_obj_set_style_arc_color(objects.arc_relative_humidity, lv_color_hex(theme_colors[theme_index][0]), LV_PART_INDICATOR | LV_STATE_DEFAULT);
     
     lv_obj_set_style_bg_color(objects.panel_relative_humidity_center, lv_color_hex(theme_colors[theme_index][1]), LV_PART_MAIN | LV_STATE_DEFAULT);
+    
+    lv_obj_set_style_bg_color(objects.container_mac_addr_entry, lv_color_hex(theme_colors[theme_index][1]), LV_PART_MAIN | LV_STATE_DEFAULT);
     
     lv_obj_invalidate(objects.home);
     lv_obj_invalidate(objects.trailer);

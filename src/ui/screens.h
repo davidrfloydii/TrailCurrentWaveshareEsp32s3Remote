@@ -161,13 +161,18 @@ typedef struct _objects_t {
     lv_obj_t *label_screen_timeout_value;
     lv_obj_t *button_screen_timeout_increase;
     lv_obj_t *check_box_keep_screen_on_while_in_motion;
+    lv_obj_t *container_connectivity_options;
+    lv_obj_t *label_gateway_mac_address;
+    lv_obj_t *btn_change_gateway_mac_address;
+    lv_obj_t *container_demo_settings;
+    lv_obj_t *button_settings_demo_light_sequence_start;
+    lv_obj_t *button_settings_demo_light_sequence_stop;
     lv_obj_t *container_about_settings;
     lv_obj_t *label_about_header;
     lv_obj_t *label_version_number;
     lv_obj_t *mcu_mac_address_value;
-    lv_obj_t *container_demo_settings;
-    lv_obj_t *button_settings_demo_light_sequence_start;
-    lv_obj_t *button_settings_demo_light_sequence_stop;
+    lv_obj_t *container_mac_addr_entry;
+    lv_obj_t *text_box_mac_address_input;
 } objects_t;
 
 extern objects_t objects;
