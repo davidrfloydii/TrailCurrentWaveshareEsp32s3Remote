@@ -25,7 +25,7 @@ time_t my_timegm(struct tm *tm)
 
     time_t t = mktime(tm);
     // TODO: Move time zone to settings and save to NVM
-    setenv("TZ", "CST6CDT,M3.2.0,M11.1.0", 1);
+    setenv("TZ", get_var_current_time_zone_string(), 1);
     tzset();
     return t;
 }

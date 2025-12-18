@@ -242,6 +242,7 @@ void setup()
         }
     }
     lv_dropdown_set_selected(objects.drop_down_selected_time_zone, selectedTimezone);
+    set_var_current_time_zone_string(savedTimezoneChar);
     // Set the version number label
     lv_label_set_text(objects.label_version_number, CURRENT_VERSION);
 }
