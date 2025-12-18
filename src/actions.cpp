@@ -166,6 +166,10 @@ void action_commit_mac_address_changes(lv_event_t *e)
     set_var_gateway_mac_address_byte4(decimalMacByte4);
     set_var_gateway_mac_address_byte5(decimalMacByte5);
     set_var_gateway_mac_address_byte6(decimalMacByte6);
+    char macString[18];
+    sprintf(macString, "%02X:%02X:%02X:%02X:%02X:%02X",
+            decimalMacByte1, decimalMacByte2, decimalMacByte3, decimalMacByte4, decimalMacByte5, decimalMacByte6);
+    lv_label_set_text(objects.label_gateway_mac_address, macString);
 }
 
 static void ta_event_cb(lv_event_t *e)
