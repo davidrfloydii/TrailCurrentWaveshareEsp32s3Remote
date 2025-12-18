@@ -213,6 +213,16 @@ void setup()
     int savedTheme = preferences.getInt("selectedTheme", 0);
     int screenTimeout = preferences.getInt("screenTimeout",0);
     bool keepScreenOnWhileDriving = preferences.getBool("onWhileDriving",true);
+    int gatewayMac1 = preferences.getInt("gatewayMac1",00);
+    int gatewayMac2 = preferences.getInt("gatewayMac2",00);
+    int gatewayMac3 = preferences.getInt("gatewayMac3",00);
+    int gatewayMac4 = preferences.getInt("gatewayMac4",00);
+    int gatewayMac5 = preferences.getInt("gatewayMac5",00);
+    int gatewayMac6 = preferences.getInt("gatewayMac6",00);
+    char macString[18];
+    sprintf(macString, "%02X:%02X:%02X:%02X:%02X:%02X",
+          gatewayMac1, gatewayMac2, gatewayMac3, gatewayMac4, gatewayMac5, gatewayMac6);
+    lv_label_set_text(objects.label_gateway_mac_address,macString);
     set_var_selected_theme(savedTheme);
     set_var_screen_timeout_value(screenTimeout);
     set_var_keep_screen_on_while_driving(keepScreenOnWhileDriving);
@@ -231,6 +241,12 @@ void loop()
         preferences.putInt("selectedTheme", selectedTheme);
         preferences.putInt("screenTimeout",screenTimeout);
         preferences.putBool("onWhileDriving",keepScreenOnWhileDriving);
+        preferences.putInt("gatewayMac1",get_var_gateway_mac_address_byte1());
+        preferences.putInt("gatewayMac2",get_var_gateway_mac_address_byte2());
+        preferences.putInt("gatewayMac3",get_var_gateway_mac_address_byte3());
+        preferences.putInt("gatewayMac4",get_var_gateway_mac_address_byte4());
+        preferences.putInt("gatewayMac5",get_var_gateway_mac_address_byte5());
+        preferences.putInt("gatewayMac6",get_var_gateway_mac_address_byte6());
         set_var_user_settings_changed(false);
     }
     unsigned long currentStatusCheckMillis = millis();

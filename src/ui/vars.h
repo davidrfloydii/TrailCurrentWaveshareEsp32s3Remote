@@ -112,6 +112,18 @@ extern int32_t get_var_screen_timeout_value();
 extern void set_var_screen_timeout_value(int32_t value);
 extern bool get_var_keep_screen_on_while_driving();
 extern void set_var_keep_screen_on_while_driving(bool value);
+extern int32_t get_var_gateway_mac_address_byte1();
+extern void set_var_gateway_mac_address_byte1(int32_t value);
+extern int32_t get_var_gateway_mac_address_byte2();
+extern void set_var_gateway_mac_address_byte2(int32_t value);
+extern int32_t get_var_gateway_mac_address_byte3();
+extern void set_var_gateway_mac_address_byte3(int32_t value);
+extern int32_t get_var_gateway_mac_address_byte4();
+extern void set_var_gateway_mac_address_byte4(int32_t value);
+extern int32_t get_var_gateway_mac_address_byte5();
+extern void set_var_gateway_mac_address_byte5(int32_t value);
+extern int32_t get_var_gateway_mac_address_byte6();
+extern void set_var_gateway_mac_address_byte6(int32_t value);
 
 
 #ifdef __cplusplus

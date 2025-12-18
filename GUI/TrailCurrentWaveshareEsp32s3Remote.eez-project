@@ -352,6 +352,54 @@
         "defaultValue": "false",
         "persistent": false,
         "native": false
+      },
+      {
+        "objID": "eaf3b11a-3058-4833-bafb-ad1aa028348e",
+        "name": "GatewayMacAddressByte1",
+        "type": "integer",
+        "defaultValue": "0",
+        "persistent": false,
+        "native": true
+      },
+      {
+        "objID": "b98318b3-9341-4c2b-f92c-94f6cb971116",
+        "name": "GatewayMacAddressByte2",
+        "type": "integer",
+        "defaultValue": "0",
+        "persistent": false,
+        "native": true
+      },
+      {
+        "objID": "00f8a057-0e15-41a3-fb61-f6c12a8444a6",
+        "name": "GatewayMacAddressByte3",
+        "type": "integer",
+        "defaultValue": "0",
+        "persistent": false,
+        "native": true
+      },
+      {
+        "objID": "d21e9dcd-7ecd-4ef5-aa92-99260c23e99f",
+        "name": "GatewayMacAddressByte4",
+        "type": "integer",
+        "defaultValue": "0",
+        "persistent": false,
+        "native": true
+      },
+      {
+        "objID": "64849c18-27db-40e7-9a53-77576b773915",
+        "name": "GatewayMacAddressByte5",
+        "type": "integer",
+        "defaultValue": "0",
+        "persistent": false,
+        "native": true
+      },
+      {
+        "objID": "46224fe8-e987-474d-b1e9-0fb8852524eb",
+        "name": "GatewayMacAddressByte6",
+        "type": "integer",
+        "defaultValue": "0",
+        "persistent": false,
+        "native": true
       }
     ],
     "structures": [],
@@ -405,6 +453,14 @@
       "localVariables": [],
       "userProperties": [],
       "name": "ChangeGatewayMacAddress"
+    },
+    {
+      "objID": "0458ae66-213b-420e-8c25-fe5fda72a0c1",
+      "components": [],
+      "connectionLines": [],
+      "localVariables": [],
+      "userProperties": [],
+      "name": "CommitMacAddressChanges"
     }
   ],
   "userPages": [

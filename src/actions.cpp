@@ -137,9 +137,30 @@ void action_keep_on_while_driving_changed(lv_event_t *e)
 {
     set_var_user_settings_changed(true);
     bool keepScreenOnWhileDriving = lv_obj_has_state(objects.check_box_keep_screen_on_while_in_motion, LV_STATE_CHECKED);
-    debug("Keep on?");
-    debugln(keepScreenOnWhileDriving);
     set_var_keep_screen_on_while_driving(keepScreenOnWhileDriving);
+}
+
+void action_commit_mac_address_changes(lv_event_t *e)
+{
+    set_var_user_settings_changed(true);
+    const char *macAddrByte1 = lv_textarea_get_text(objects.text_box_mac_address_input_first_byte);
+    const char *macAddrByte2 = lv_textarea_get_text(objects.text_box_mac_address_input_second_byte);
+    const char *macAddrByte3 = lv_textarea_get_text(objects.text_box_mac_address_input_third_byte);
+    const char *macAddrByte4 = lv_textarea_get_text(objects.text_box_mac_address_input_fourth_byte);
+    const char *macAddrByte5 = lv_textarea_get_text(objects.text_box_mac_address_input_fifth_byte);
+    const char *macAddrByte6 = lv_textarea_get_text(objects.text_box_mac_address_input_sixth_byte);
+    int decimalMacByte1 = strtol(macAddrByte1, NULL, 16);
+    int decimalMacByte2 = strtol(macAddrByte2, NULL, 16);
+    int decimalMacByte3 = strtol(macAddrByte3, NULL, 16);
+    int decimalMacByte4 = strtol(macAddrByte4, NULL, 16);
+    int decimalMacByte5 = strtol(macAddrByte5, NULL, 16);
+    int decimalMacByte6 = strtol(macAddrByte6, NULL, 16);
+    set_var_gateway_mac_address_byte1(decimalMacByte1);
+    set_var_gateway_mac_address_byte2(decimalMacByte2);
+    set_var_gateway_mac_address_byte3(decimalMacByte3);
+    set_var_gateway_mac_address_byte4(decimalMacByte4);
+    set_var_gateway_mac_address_byte5(decimalMacByte5);
+    set_var_gateway_mac_address_byte6(decimalMacByte6);
 }
 
 static void ta_event_cb(lv_event_t *e)
@@ -148,7 +169,6 @@ static void ta_event_cb(lv_event_t *e)
     lv_obj_t *ta = lv_event_get_target(e);
     // lv_obj_t * ta = lv_event_get_target_obj(e);
     lv_obj_t *kb = (lv_obj_t *)lv_event_get_user_data(e);
-    debugln(code);
     if (code == LV_EVENT_FOCUSED)
     {
         lv_keyboard_set_textarea(kb, ta);
@@ -164,6 +184,7 @@ static void ta_event_cb(lv_event_t *e)
     if (code == 31)
     {
         lv_obj_add_flag(objects.container_mac_addr_entry, LV_OBJ_FLAG_HIDDEN);
+        action_commit_mac_address_changes(e);
     }
 }
 

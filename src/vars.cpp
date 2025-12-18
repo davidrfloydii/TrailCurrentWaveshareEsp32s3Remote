@@ -475,11 +475,58 @@ bool get_var_keep_screen_on_while_driving()
 void set_var_keep_screen_on_while_driving(bool value)
 {
     keep_screen_on_while_driving = value;
-    debug("Keep on ");
-    debugln(value);
     if (value) {
         lv_obj_add_state(objects.check_box_keep_screen_on_while_in_motion,LV_STATE_CHECKED);
     } else {
         lv_obj_clear_state(objects.check_box_keep_screen_on_while_in_motion,LV_STATE_CHECKED);
     }
+}
+
+
+int32_t gateway_mac_address_byte1;
+int32_t get_var_gateway_mac_address_byte1() {
+    return gateway_mac_address_byte1;
+}
+void set_var_gateway_mac_address_byte1(int32_t value) {
+    gateway_mac_address_byte1 = value;
+}
+
+int32_t gateway_mac_address_byte2;
+int32_t get_var_gateway_mac_address_byte2() {
+    return gateway_mac_address_byte2;
+}
+void set_var_gateway_mac_address_byte2(int32_t value) {
+    gateway_mac_address_byte2 = value;
+}
+
+int32_t gateway_mac_address_byte3;
+int32_t get_var_gateway_mac_address_byte3() {
+    return gateway_mac_address_byte3;
+}
+void set_var_gateway_mac_address_byte3(int32_t value) {
+    gateway_mac_address_byte3 = value;
+}
+
+int32_t gateway_mac_address_byte4;
+int32_t get_var_gateway_mac_address_byte4() {
+    return gateway_mac_address_byte4;
+}
+void set_var_gateway_mac_address_byte4(int32_t value) {
+    gateway_mac_address_byte4 = value;
+}
+
+int32_t gateway_mac_address_byte5;
+int32_t get_var_gateway_mac_address_byte5() {
+    return gateway_mac_address_byte5;
+}
+void set_var_gateway_mac_address_byte5(int32_t value) {
+    gateway_mac_address_byte5 = value;
+}
+
+int32_t gateway_mac_address_byte6;
+int32_t get_var_gateway_mac_address_byte6() {
+    return gateway_mac_address_byte6;
+}
+void set_var_gateway_mac_address_byte6(int32_t value) {
+    gateway_mac_address_byte6 = value;
 }
